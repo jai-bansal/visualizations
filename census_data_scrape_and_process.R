@@ -5,26 +5,26 @@
 # This data comes from the United States Census and can be viewed at the url below:
 # https://en.wikipedia.org/wiki/List_of_U.S._states_by_historical_population
 
-# Load packages:
+# Load packages.
 library(rvest)
 library(data.table)
 
 #####
-# SCRAPE DATA:
+# SCRAPE DATA.
 
-  # Specify webpage:
+  # Specify webpage.
   page = html('https://en.wikipedia.org/wiki/List_of_U.S._states_by_historical_population')
   
-  # Get xpath:
+  # Get xpath.
   xpath = html_nodes(page, xpath = '//*[@id="mw-content-text"]/table[3]')
   
-  # Get data:
+  # Get data.
   # 'html_table' returns a list containing a data frame, so the data frame is extracted.
   census_data = html_table(xpath, fill = T)[[1]]
   census_data = data.table(census_data)
   
 #####
-# PROCESS DATA:
+# PROCESS DATA.
   
   # Columns are 'character' vectors and have commas.
   # These must be removed.
@@ -43,8 +43,8 @@ library(data.table)
   census_data$`2000` = as.numeric(census_data$`2000`)
   census_data$`2010` = as.numeric(census_data$`2010`)
   
-  # Sort data by 'Name':
+  # Sort data by 'Name'.
   census_data = census_data[order(Name)]
   
-# Write data to '.csv' file:
+# Write data to '.csv' file.
 write.csv(census_data, 'census_data.csv', row.names = F)

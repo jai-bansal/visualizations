@@ -12,7 +12,7 @@ library(ggplot2)
 # Load data.
 census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
 
-# SUBSET DATA.
+# SUBSET/PROCESS DATA.
 
   # Specify states of interest.
   states = c('Delaware', 'Maryland', 'New Jersey', 'Pennsylvania', 

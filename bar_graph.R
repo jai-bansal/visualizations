@@ -32,6 +32,8 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
     theme(legend.position = 'none') + 
     geom_text(aes(label = round(`2010`, 1)), 
               vjust = 2) +
+    theme(axis.text.x = element_text(color = 'black'), 
+          axis.text.y = element_text(color= 'black')) +
     ggtitle('Selected State Populations in 2010 (in thousands)') + 
     xlab('State') + 
     ylab('2010 Population (in thousands)')

@@ -52,6 +52,8 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
     geom_line() + 
     geom_point() + 
     ylim(c(10000, 13000)) + 
+    theme(axis.text.x = element_text(color = 'black'), 
+          axis.text.y = element_text(color = 'black')) +
     annotate('text', 
              x = 1, 
              y = 10000, 

@@ -26,11 +26,8 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   
 # PLOT DATA.
   
-  # Set color palette.
-  colors = c('#E69F00', '#56B4E9', '#009E73', '#0072B2', '#D55E00', '#CC79A7')
-  
   # Plot data.
-  ggplot(data = census_subset, aes(x = Name, y = `2010`, fill = colors)) + 
+  ggplot(data = census_subset, aes(x = Name, y = `2010`, fill = Name)) + 
     geom_bar(stat = 'identity') + 
     theme(legend.position = 'none') + 
     geom_text(aes(label = round(`2010`, 1)), 

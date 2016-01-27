@@ -71,7 +71,7 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
              size = 4) +
     annotate('text', 
              x = 6, 
-             y = 13000, 
+             y = 12950, 
              label = census_subset_transpose[State == 'Illinois' & Year == '2010']$Population, 
              size = 4) +
     ggtitle('Population (in thousands) Over Time for Selected States') +

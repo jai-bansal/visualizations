@@ -13,6 +13,7 @@ library(ggplot2)
 # Load data.
 census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
 
+#####
 # SUBSET/PROCESS DATA.
 
   # Specify states of interest.
@@ -35,14 +36,13 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   
   # Change column names of 'census_subset'.
   setnames(census_subset, names(census_subset), c('State', 'Year', 'Population'))
-  
-# PLOT DATA.
-  
-  # Plot data.
-  ggplot(data = census_subset, aes(x = Year, y = Population, color = State, shape = State)) +
-    geom_point(size = 3) +
-    theme(axis.text.x = element_text(color = 'black'), 
-          axis.text.y = element_text(color = 'black')) +
-    ggtitle('Selected State Populations (in thousands) Over Time') +
-    xlab('Year') +
-    ylab('Population (in thousands)')
+
+#####  
+# Plot data.
+ggplot(data = census_subset, aes(x = Year, y = Population, color = State, shape = State)) +
+  geom_point(size = 3) +
+  theme(axis.text.x = element_text(color = 'black'), 
+        axis.text.y = element_text(color = 'black')) +
+  ggtitle('Selected State Populations (in thousands) Over Time') +
+  xlab('Year') +
+  ylab('Population (in thousands)')

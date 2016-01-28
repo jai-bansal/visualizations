@@ -12,6 +12,7 @@ library(ggplot2)
 # Load data.
 census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
 
+#####
 # SUBSET/PROCESS DATA.
 
   # Specify states of interest.
@@ -23,17 +24,16 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   
   # Divide population values by 1000 for easier graph viewing.
   census_subset$`2010` = census_subset$`2010` / 1000
-  
-# PLOT DATA.
-  
-  # Plot data.
+
+#####  
+# Plot data.
   ggplot(data = census_subset, aes(x = Name, y = `2010`, fill = Name)) + 
-    geom_bar(stat = 'identity') + 
-    theme(legend.position = 'none') + 
-    geom_text(aes(label = round(`2010`, 1)), 
-              vjust = 2) +
-    theme(axis.text.x = element_text(color = 'black'), 
-          axis.text.y = element_text(color= 'black')) +
-    ggtitle('Selected State Populations in 2010 (in thousands)') + 
-    xlab('State') + 
-    ylab('2010 Population (in thousands)')
+  geom_bar(stat = 'identity') + 
+  theme(legend.position = 'none') + 
+  geom_text(aes(label = round(`2010`, 1)), 
+            vjust = 2) +
+  theme(axis.text.x = element_text(color = 'black'), 
+        axis.text.y = element_text(color= 'black')) +
+  ggtitle('Selected State Populations in 2010 (in thousands)') + 
+  xlab('State') + 
+  ylab('2010 Population (in thousands)')

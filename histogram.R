@@ -12,6 +12,7 @@ library(grid)
 # Load data.
 census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
 
+#####
 # SUBSET/PROCESS DATA.
   
   # Create data subset consisting of all 2010 observations.
@@ -23,42 +24,41 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   # Divide population values by 1000 for easier graph viewing.
   census_subset$`2010` = census_subset$`2010` / 1000
   
-# PLOT DATA.
-  
-  # Plot data.
-  ggplot(data = census_subset, aes(x = `2010`)) +
-    geom_histogram(binwidth = 1500, 
-                   fill = I('darkgreen'), 
-                   col = I('black')) +
-    scale_y_continuous(breaks = seq(0, 14, by = 1)) + 
-    theme(axis.text.x = element_text(color = 'black'), 
-          axis.text.y = element_text(color = 'black')) +
-    geom_segment(aes(x = 26000, y = 2, xend = 25000, yend = 1.1), 
-                 arrow = arrow(length = unit(0.5, 'cm')), 
-                 size = 1) +
-    geom_segment(aes(x = 35000, y = 2, xend = 36000, yend = 1.1), 
-                 arrow = arrow(length = unit(0.5, 'cm')), 
-                 size = 1) +
-    annotate('text', 
-             x = 26000, 
-             y = 2.8,
-             label = census_subset[`2010` > 20000 & `2010` < 30000]$Name,
-             size = 5) +
-    annotate('text', 
-             x = 26000, 
-             y = 2.3, 
-             label = paste0('(', round(census_subset[Name == 'Texas']$`2010`, 2), ')'), 
-             size = 5) +
-    annotate('text', 
-             x = 35000, 
-             y = 2.8, 
-             label = census_subset[`2010` > 30000]$Name, 
-             size = 5) +
-    annotate('text', 
-             x = 35000, 
-             y = 2.3, 
-             label = paste0('(', round(census_subset[Name == 'California']$`2010`, 2), ')'), 
-             size = 5) +
-    ggtitle('Absolute Frequency of 2010 US State Populations (in thousands)') +
-    xlab('2010 Populations (in thousands)') +
-    ylab('Absolute Frequency')
+#####
+# Plot data.
+ggplot(data = census_subset, aes(x = `2010`)) +
+  geom_histogram(binwidth = 1500, 
+                 fill = I('darkgreen'), 
+                 col = I('black')) +
+  scale_y_continuous(breaks = seq(0, 14, by = 1)) + 
+  theme(axis.text.x = element_text(color = 'black'), 
+        axis.text.y = element_text(color = 'black')) +
+  geom_segment(aes(x = 26000, y = 2, xend = 25000, yend = 1.1), 
+               arrow = arrow(length = unit(0.5, 'cm')), 
+               size = 1) +
+  geom_segment(aes(x = 35000, y = 2, xend = 36000, yend = 1.1), 
+               arrow = arrow(length = unit(0.5, 'cm')), 
+               size = 1) +
+  annotate('text', 
+           x = 26000, 
+           y = 2.8,
+           label = census_subset[`2010` > 20000 & `2010` < 30000]$Name,
+           size = 5) +
+  annotate('text', 
+           x = 26000, 
+           y = 2.3, 
+           label = paste0('(', round(census_subset[Name == 'Texas']$`2010`, 2), ')'), 
+           size = 5) +
+  annotate('text', 
+           x = 35000, 
+           y = 2.8, 
+           label = census_subset[`2010` > 30000]$Name, 
+           size = 5) +
+  annotate('text', 
+           x = 35000, 
+           y = 2.3, 
+           label = paste0('(', round(census_subset[Name == 'California']$`2010`, 2), ')'), 
+           size = 5) +
+  ggtitle('Absolute Frequency of 2010 US State Populations (in thousands)') +
+  xlab('2010 Populations (in thousands)') +
+  ylab('Absolute Frequency')

@@ -12,6 +12,7 @@ library(ggplot2)
 # Load data.
 census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
 
+#####
 # SUBSET/PROCESS DATA.
 
   # Subset data.
@@ -44,36 +45,35 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
     
     # Change 'census_subset_transpose$Population' to 'numeric'.
     census_subset_transpose$Population = as.numeric(census_subset_transpose$Population)
-  
-# PLOT DATA.
-  
-  # Plot data.
-  ggplot(data = census_subset_transpose, aes(x = Year, y = Population, group = State, color = State)) + 
-    geom_line() + 
-    geom_point() + 
-    ylim(c(10000, 13000)) + 
-    theme(axis.text.x = element_text(color = 'black'), 
-          axis.text.y = element_text(color = 'black')) +
-    annotate('text', 
-             x = 1, 
-             y = 10000, 
-             label = census_subset_transpose[State == 'Illinois' & Year == '1960']$Population, 
-             size = 4) +
-    annotate('text',
-             x = 1, 
-             y = 11250, 
-             label = census_subset_transpose[State == 'Pennsylvania' & Year == '1960']$Population, 
-             size = 4) + 
-    annotate('text', 
-             x = 6.2, 
-             y = 12600, 
-             label = census_subset_transpose[State == 'Pennsylvania' & Year == '2010']$Population, 
-             size = 4) +
-    annotate('text', 
-             x = 6, 
-             y = 12950, 
-             label = census_subset_transpose[State == 'Illinois' & Year == '2010']$Population, 
-             size = 4) +
-    ggtitle('Population (in thousands) Over Time for Selected States') +
-    xlab('Year') +
-    ylab('Population (in thousands)')
+
+#####  
+# Plot data.
+ggplot(data = census_subset_transpose, aes(x = Year, y = Population, group = State, color = State)) + 
+  geom_line() + 
+  geom_point() + 
+  ylim(c(10000, 13000)) + 
+  theme(axis.text.x = element_text(color = 'black'), 
+        axis.text.y = element_text(color = 'black')) +
+  annotate('text', 
+           x = 1, 
+           y = 10000, 
+           label = census_subset_transpose[State == 'Illinois' & Year == '1960']$Population, 
+           size = 4) +
+  annotate('text',
+           x = 1, 
+           y = 11250, 
+           label = census_subset_transpose[State == 'Pennsylvania' & Year == '1960']$Population, 
+           size = 4) + 
+  annotate('text', 
+           x = 6.2, 
+           y = 12600, 
+           label = census_subset_transpose[State == 'Pennsylvania' & Year == '2010']$Population, 
+           size = 4) +
+  annotate('text', 
+           x = 6, 
+           y = 12950, 
+           label = census_subset_transpose[State == 'Illinois' & Year == '2010']$Population, 
+           size = 4) +
+  ggtitle('Population (in thousands) Over Time for Selected States') +
+  xlab('Year') +
+  ylab('Population (in thousands)')

@@ -12,6 +12,7 @@ library(ggplot2)
 # Load data.
 census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
 
+#####
 # SUBSET/PROCESS DATA.
 
   # Specify states of interest.
@@ -44,21 +45,20 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
     
     # Create 'label_locations' column that specifies label locations on pie chart.
     census_subset$label_locations = (census_subset$sum + census_subset$offset_sum) / 2
-  
-# PLOT DATA.
-  
-  # Plot data.
-  ggplot(data = census_subset, aes(x = '', y = `2010`, fill = as.character(`2010`))) + 
-    geom_bar(stat = 'identity', 
-             color = 'black') +
-    geom_text(aes(y = label_locations, label = census_subset$percent), 
-              size = 4) +
-    coord_polar('y') +
-    guides(fill = guide_legend(title = 'Population')) +
-    theme(axis.ticks = element_blank(), 
-          axis.text.x = element_text(color = 'black')) +
-    scale_y_continuous(breaks = census_subset$label_locations, 
-                       labels = census_subset$Name) +
-    ggtitle('Selected State Population (in thousands) and Percentage in 2010') +
-    xlab('') +
-    ylab('')
+
+#####  
+# Plot data.
+ggplot(data = census_subset, aes(x = '', y = `2010`, fill = as.character(`2010`))) + 
+geom_bar(stat = 'identity', 
+         color = 'black') +
+geom_text(aes(y = label_locations, label = census_subset$percent), 
+          size = 4) +
+coord_polar('y') +
+guides(fill = guide_legend(title = 'Population')) +
+theme(axis.ticks = element_blank(), 
+      axis.text.x = element_text(color = 'black')) +
+scale_y_continuous(breaks = census_subset$label_locations, 
+                   labels = census_subset$Name) +
+ggtitle('Selected State Population (in thousands) and Percentage in 2010') +
+xlab('') +
+ylab('')

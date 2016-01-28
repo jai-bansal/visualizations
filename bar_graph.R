@@ -27,7 +27,7 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
 
 #####  
 # Plot data.
-  ggplot(data = census_subset, aes(x = Name, y = `2010`, fill = Name)) + 
+ggplot(data = census_subset, aes(x = Name, y = `2010`, fill = Name)) + 
   geom_bar(stat = 'identity') + 
   theme(legend.position = 'none') + 
   geom_text(aes(label = round(`2010`, 1)), 

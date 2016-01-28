@@ -20,7 +20,7 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   # Remove row containing total population of United States.
   census_subset = census_subset[Name != 'United States']
   
-  # Divided population values by 1000 for easier graph viewing.
+  # Divide population values by 1000 for easier graph viewing.
   census_subset$`2010` = census_subset$`2010` / 1000
   
 # PLOT DATA.

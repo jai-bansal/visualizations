@@ -21,7 +21,7 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   # Create data subset (specified above).
   census_subset = census_data[Name %in% states, .(Name, `2010`)]
   
-  # Divided population values by 1000 for easier graph viewing.
+  # Divide population values by 1000 for easier graph viewing.
   census_subset$`2010` = census_subset$`2010` / 1000
   
   # Compute percentage of total population accounted for by each state.

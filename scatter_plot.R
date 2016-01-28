@@ -1,0 +1,48 @@
+# This script creates a scatter plot using (a subset of) 'census_data.csv'.
+
+# A description of 'census_data.csv' can be found in 'census_data_scrape_and_process.R'.
+# To avoid an overwhelming plot, I will be using a subset of 'census_data.csv' consisting of
+# all observations for 6 states (North Carolina, Maryland, New Jersey, Pennsylvania, Virginia, 
+# and New York).
+
+# Load packages.
+library(data.table)
+library(reshape2)
+library(ggplot2)
+
+# Load data.
+census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
+
+# SUBSET/PROCESS DATA.
+
+  # Specify states of interest.
+  states = c('North Carolina', 'Maryland', 'New Jersey', 'Pennsylvania', 
+             'Virginia', 'New York')
+  
+  # Create data subset (specified above).
+  census_subset = census_data[Name %in% states]
+  
+  # Divided population values by 1000 for easier graph viewing.
+  census_subset$`1960` = census_subset$`1960` / 1000
+  census_subset$`1970` = census_subset$`1970` / 1000
+  census_subset$`1980` = census_subset$`1980` / 1000
+  census_subset$`1990` = census_subset$`1990` / 1000
+  census_subset$`2000` = census_subset$`2000` / 1000
+  census_subset$`2010` = census_subset$`2010` / 1000
+  
+  # Melt 'census_subset' to allow creation of scatter plot.
+  census_subset = melt(census_subset, id = 'Name')
+  
+  # Change column names of 'census_subset'.
+  setnames(census_subset, names(census_subset), c('State', 'Year', 'Population'))
+  
+# PLOT DATA.
+  
+  # Plot data.
+  ggplot(data = census_subset, aes(x = Year, y = Population, color = State, shape = State)) +
+    geom_point(size = 3) +
+    theme(axis.text.x = element_text(color = 'black'), 
+          axis.text.y = element_text(color = 'black')) +
+    ggtitle('Selected State Populations (in thousands) Over Time') +
+    xlab('Year') +
+    ylab('Population (in thousands)')

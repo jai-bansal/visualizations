@@ -7,8 +7,8 @@
 # These regions are defined by the Bureau of Economic Analysis and can be viewed at the url below:
 # https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States
 
-# The Far West region consists of Washington, Oregon, California, and Nevada.
-# The Southwest region consists of Arizona, New Mexico, Texas, and Oklahoma.
+# The 'Far West' region consists of Washington, Oregon, California, and Nevada.
+# The 'Southwest' region consists of Arizona, New Mexico, Texas, and Oklahoma.
 
 # Load packages.
 library(data.table)

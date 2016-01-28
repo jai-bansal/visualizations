@@ -42,5 +42,5 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   
 #####
 # Create motion chart.
-fig = gvisMotionChart2(data = census_subset, idvar = 'State', timevar = 'Year', xvar = 'Region', yvar = 'Population')
+fig = gvisMotionChart(data = census_subset, idvar = 'State', timevar = 'Year', xvar = 'Region', yvar = 'Population')
 plot(fig)

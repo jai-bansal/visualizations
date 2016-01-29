@@ -24,7 +24,7 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   # Subset data.
   census_subset = census_data[Name %in% southwest]
   
-  # Divided population values by 1000 for easier graph viewing.
+  # Divide population values by 1000 for easier graph viewing.
   census_subset$`1960` = census_subset$`1960` / 1000
   census_subset$`1970` = census_subset$`1970` / 1000
   census_subset$`1980` = census_subset$`1980` / 1000

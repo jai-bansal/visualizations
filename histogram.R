@@ -30,10 +30,16 @@ ggplot(data = census_subset, aes(x = `2010`)) +
   geom_histogram(binwidth = 1500, 
                  fill = I('darkgreen'), 
                  col = I('black')) +
+  theme_bw() +
   scale_y_continuous(breaks = seq(0, 14, by = 1)) + 
   theme(axis.text.x = element_text(color = 'black'), 
-        axis.text.y = element_text(color = 'black')) +
-  theme_bw() +
+        axis.text.y = element_text(color = 'black'),
+        axis.title.x = element_text(face = 'bold', 
+                                    size = 12),
+        axis.title.y = element_text(face = 'bold',
+                                    size = 12),
+        plot.title = element_text(face = 'bold', 
+                                  size = 16)) +
   geom_segment(aes(x = 26000, y = 2, xend = 25000, yend = 1.1), 
                arrow = arrow(length = unit(0.5, 'cm')), 
                size = 1) +

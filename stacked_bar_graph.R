@@ -57,8 +57,16 @@ ggplot(data = census_subset, aes(x = Year, y = Population, fill = State, order =
     geom_text(aes(label = round(census_subset$Population, 1), x = Year,  y = y_coordinate), 
               size = 3.5, 
               color = 'white') +
-    theme(axis.text.x =  element_text(color = 'black')) +
-    theme(axis.text.y = element_text(color = 'black')) +
+    theme(axis.text.x =  element_text(color = 'black'), 
+          axis.text.y = element_text(color = 'black'), 
+          axis.title.x = element_text(face = 'bold', 
+                                    size = 13), 
+         axis.title.y = element_text(face = 'bold', 
+                                    size = 13), 
+         plot.title = element_text(face = 'bold',
+                                  size = 15), 
+         legend.title = element_text(size = 13), 
+         legend.text = element_text(size = 12)) +
     ggtitle('Southwestern Region Population (in thousands) by Year and State') +
     xlab('Year') +
     ylab('Population (in thousands)')

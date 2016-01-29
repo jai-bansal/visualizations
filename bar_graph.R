@@ -5,7 +5,7 @@
 # observations for 6 states (Delaware, Maryland, New Jersey, Pennsylvania, Virginia, 
 # and West Virginia) in 2010.
 
-# Load packages.s
+# Load packages.
 library(data.table)
 library(ggplot2)
 

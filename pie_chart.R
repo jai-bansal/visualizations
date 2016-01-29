@@ -48,17 +48,26 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
 
 #####  
 # Plot data.
-ggplot(data = census_subset, aes(x = '', y = `2010`, fill = as.character(`2010`))) + 
+ggplot(data = census_subset, aes(x = '', y = `2010`, fill = as.character(round(`2010`, 2)))) + 
 geom_bar(stat = 'identity', 
          color = 'black') +
 geom_text(aes(y = label_locations, label = census_subset$percent), 
-          size = 4) +
+          size = 5) +
 coord_polar('y') +
 guides(fill = guide_legend(title = 'Population')) +
+theme_few() +
 theme(axis.ticks = element_blank(), 
-      axis.text.x = element_text(color = 'black')) +
+      axis.text.x = element_text(color = 'black', 
+                                 size = 12), 
+      plot.title = element_text(face = 'bold', 
+                                size = 14),
+      panel.background = element_rect(fill = 'lightgrey', 
+                                      colour = 'lightgrey'), 
+      legend.text = element_text(size = 12), 
+      legend.title = element_text(size = 13)) +
 scale_y_continuous(breaks = census_subset$label_locations, 
                    labels = census_subset$Name) +
+scale_fill_brewer(palette = 'Set1') +
 ggtitle('Selected State Population (in thousands) and Percentage in 2010') +
 xlab('') +
 ylab('')

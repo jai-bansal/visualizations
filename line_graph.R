@@ -52,8 +52,16 @@ ggplot(data = census_subset_transpose, aes(x = Year, y = Population, group = Sta
   geom_line() + 
   geom_point() + 
   ylim(c(10000, 13000)) + 
+  theme_economist() +
   theme(axis.text.x = element_text(color = 'black'), 
-        axis.text.y = element_text(color = 'black')) +
+        axis.text.y = element_text(color = 'black'), 
+        axis.title.x = element_text(face = 'bold', 
+                                    size = 12),
+        axis.title.y = element_text(face = 'bold',
+                                    size = 12),
+        plot.title = element_text(face = 'bold', 
+                                  size = 14, 
+                                  hjust = 0.35)) +
   annotate('text', 
            x = 1, 
            y = 10000, 
@@ -74,7 +82,6 @@ ggplot(data = census_subset_transpose, aes(x = Year, y = Population, group = Sta
            y = 12950, 
            label = census_subset_transpose[State == 'Illinois' & Year == '2010']$Population, 
            size = 4) +
-  theme_economist() +
   ggtitle('Population (in thousands) Over Time for Selected States') +
   xlab('Year') +
   ylab('Population (in thousands)')

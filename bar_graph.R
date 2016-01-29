@@ -5,7 +5,7 @@
 # observations for 6 states (Delaware, Maryland, New Jersey, Pennsylvania, Virginia, 
 # and West Virginia) in 2010.
 
-# Load packages.
+# Load packages.s
 library(data.table)
 library(ggplot2)
 
@@ -33,7 +33,13 @@ ggplot(data = census_subset, aes(x = Name, y = `2010`, fill = Name)) +
   geom_text(aes(label = round(`2010`, 1)), 
             vjust = 2) +
   theme(axis.text.x = element_text(color = 'black'), 
-        axis.text.y = element_text(color= 'black')) +
+        axis.text.y = element_text(color= 'black'),
+        axis.title.x = element_text(face = 'bold', 
+                                    size = 12),
+        axis.title.y = element_text(face = 'bold',
+                                    size = 12),
+        plot.title = element_text(face = 'bold', 
+                                  size = 16)) +
   ggtitle('Selected State Populations in 2010 (in thousands)') + 
   xlab('State') + 
   ylab('2010 Population (in thousands)')

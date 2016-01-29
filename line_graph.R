@@ -74,6 +74,7 @@ ggplot(data = census_subset_transpose, aes(x = Year, y = Population, group = Sta
            y = 12950, 
            label = census_subset_transpose[State == 'Illinois' & Year == '2010']$Population, 
            size = 4) +
+  theme_economist() +
   ggtitle('Population (in thousands) Over Time for Selected States') +
   xlab('Year') +
   ylab('Population (in thousands)')

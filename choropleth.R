@@ -27,6 +27,8 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   # Divide '2010' by 1000 for easier map viewing.
   census_subset$`2010` = census_subset$`2010` / 1000
   
+  # Get US state data.
+  states_map = map_data('state')
   
 #####  
 # Plot data.
@@ -43,7 +45,9 @@ ggplot(data = census_subset, aes(map_id = census_subset$Name)) +
           axis.ticks.x = element_blank(), 
           axis.ticks.y = element_blank(),
           axis.text.x = element_blank(), 
-          axis.text.y = element_blank()) +
+          axis.text.y = element_blank(), 
+          plot.title = element_text(face = 'bold', 
+                                    size = 16)) +
     ggtitle('2010 Contiguous United States Population (in thousands) by State') +
     xlab('') +
     ylab('')

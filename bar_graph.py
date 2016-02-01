@@ -9,7 +9,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.style
 
 # Load data.
 census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')

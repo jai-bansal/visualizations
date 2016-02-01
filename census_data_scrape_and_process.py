@@ -30,4 +30,4 @@ census_data = census_data[census_data['Name'] != 'Name']
 census_data.sort_values( by = 'Name', inplace = True)
 
 # CREATE CSV FILE.
-census_data.to_csv('census_data.csv')
+census_data.to_csv('census_data.csv', index = False)

@@ -13,3 +13,6 @@ import matplotlib.pyplot as plt
 census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')
 
 # SUBSET/PROCESS DATA.
+
+# Subset data.
+census_subset = census_data[census_data['Name'].isin(['Pennsylvania', 'Illinois'])]

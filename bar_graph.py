@@ -52,7 +52,8 @@ bars = ax1.bar(np.arange(0, (shift * len(census_subset['2010'])), shift), census
 
 # Annotate bars with '2010' population values.
 for i in range(0, len(census_subset['Name'])):
-    plt.text((i * shift), (bars[i].get_height() + 350),
+    plt.text((i * shift),
+             (bars[i].get_height() + 350),
              round(bars[i].get_height(), 1),
              horizontalalignment = 'center',
              verticalalignment = 'center')
@@ -75,8 +76,6 @@ ax1.grid(zorder = 0)
 
 # Adjust plot margins.
 plt.subplots_adjust(top = 0.94 , bottom = 0.09, left = 0.12, right = 0.98)
-
-fig.patch.set_facecolor('lightgray')
 
 # Show plot.      
 plt.show()

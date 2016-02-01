@@ -31,8 +31,6 @@ census_subset['2010'] = census_subset['2010'] / 1000
 # PLOT DATA.
 
 # Create figure and subplot.
-# This typically isn't necessary since there's only 1 subplot, but will help in annotating
-# the bars.
 fig = plt.figure()
 ax1 = fig.add_subplot(1, 1, 1)
 
@@ -45,7 +43,8 @@ shift = 1.3
 
 # Insert plot data.
 # This must be done in an absurd way since 'matplotlib.pyplot' can't handle strings.
-bars = ax1.bar(np.arange(0, (shift * len(census_subset['2010'])), shift), census_subset['2010'],
+bars = ax1.bar(np.arange(0, (shift * len(census_subset['2010'])), shift),
+               census_subset['2010'],
                align = 'center',
                color = colors,
                zorder = 3)

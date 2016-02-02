@@ -38,9 +38,9 @@ ax1.hist(census_subset['2010'], bins = 15, color = 'darkgreen')
 
 # Add annotations for Texas and California.
 ax1.annotate('Texas', xy = (census_subset[census_subset['Name'] == 'Texas']['2010'], 1),
-             xytext = ((census_subset[census_subset['Name'] == 'Texas']['2010'] + 2000), 4), fontsize = 13)
+             xytext = ((census_subset[census_subset['Name'] == 'Texas']['2010'] - 4000), 4), fontsize = 13)
 ax1.annotate('California', xy = (census_subset[census_subset['Name'] == 'California']['2010'], 1),
-             xytext = ((census_subset[census_subset['Name'] == 'California']['2010'] + 2000), 4), fontsize = 13)
+             xytext = ((census_subset[census_subset['Name'] == 'California']['2010']- 6000), 4), fontsize = 13)
 
 # Remove ticks from both axes.
 ax1.tick_params(axis = 'both', length = 0)
@@ -49,6 +49,9 @@ ax1.tick_params(axis = 'both', length = 0)
 plt.title('Frequency of 2010 US State Populations (in thousands)', fontweight = 'bold')
 plt.xlabel('2010 Populations (in thousands)', fontweight = 'bold', fontsize = 12.5, color = 'white')
 plt.ylabel('Frequency', fontweight = 'bold', fontsize = 12.5, color = 'white')
+
+# Adjust plot margins.
+plt.subplots_adjust(left = 0.08, bottom = 0.09, right = 0.95, top = 0.93)
 
 # Show plot.
 plt.show()

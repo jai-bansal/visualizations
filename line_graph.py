@@ -73,7 +73,6 @@ plt.xlim([1955, 2015])
 ax1.tick_params(axis = 'both', colors = 'black')
 ax1.tick_params(axis = 'both', labelsize = 12)
 
-
 # Remove first and last x-axis label (not needed).
 ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)
 ax1.xaxis.get_major_ticks()[-1].label1.set_visible(False)
@@ -91,6 +90,9 @@ ax1.grid(zorder = 0)
 
 # Add legend.
 ax1.legend(loc = 2)
+
+# Adjust plot margins.
+plt.subplots_adjust(left = 0.13, bottom = 0.1, right = 0.98, top = 0.93)
 
 # Show plot.
 plt.show()

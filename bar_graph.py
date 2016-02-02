@@ -74,7 +74,7 @@ plt.ylabel('2010 Population (in thousands)', fontweight = 'bold', fontsize = 12.
 ax1.grid(zorder = 0)
 
 # Adjust plot margins.
-plt.subplots_adjust(top = 0.94 , bottom = 0.09, left = 0.12, right = 0.98)
+plt.subplots_adjust(left = 0.12, bottom = 0.09, right = 0.98, top = 0.94)
 
 # Show plot.      
 plt.show()

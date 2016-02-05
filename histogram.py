@@ -34,13 +34,21 @@ fig = plt.figure()
 ax1 = fig.add_subplot(1, 1, 1)
 
 # Add data.
-ax1.hist(census_subset['2010'], bins = 15, color = 'darkgreen')
+ax1.hist(census_subset['2010'], bins = 19, color = 'darkgreen')
 
 # Add annotations for Texas and California.
-ax1.annotate('Texas', xy = (census_subset[census_subset['Name'] == 'Texas']['2010'], 1),
-             xytext = ((census_subset[census_subset['Name'] == 'Texas']['2010'] - 4000), 4), fontsize = 13)
-ax1.annotate('California', xy = (census_subset[census_subset['Name'] == 'California']['2010'], 1),
-             xytext = ((census_subset[census_subset['Name'] == 'California']['2010']- 6000), 4), fontsize = 13)
+ax1.annotate('Texas', xy = ((census_subset[census_subset['Name'] == 'Texas']['2010']), 1),
+             xytext = ((census_subset[census_subset['Name'] == 'Texas']['2010'] - 4000), 3.75), fontsize = 13)
+ax1.annotate('(' + str(round(census_subset[census_subset['Name'] == 'Texas']['2010'].values[0], 1)) + ')',
+             xy = ((census_subset[census_subset['Name'] == 'Texas']['2010'] - 400), 1),
+             xytext = ((census_subset[census_subset['Name'] == 'Texas']['2010'] - 4000), 3), fontsize = 13,
+             arrowprops = dict(arrowstyle = '->'))
+ax1.annotate('California', xy = ((census_subset[census_subset['Name'] == 'California']['2010']), 1),
+             xytext = ((census_subset[census_subset['Name'] == 'California']['2010']- 5000), 3.75), fontsize = 13)
+ax1.annotate('(' + str(round(census_subset[census_subset['Name'] == 'California']['2010'].values[0], 1)) + ')',
+             xy = ((census_subset[census_subset['Name'] == 'California']['2010'] - 900), 1),
+             xytext = ((census_subset[census_subset['Name'] == 'California']['2010'] - 5000), 3), fontsize = 13,
+             arrowprops = dict(arrowstyle = '->'))
 
 # Remove ticks from both axes.
 ax1.tick_params(axis = 'both', length = 0)

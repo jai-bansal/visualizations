@@ -11,6 +11,7 @@
 
 # Load packages.
 library(data.table)
+library(ggplot2)
 
 # Load data.
 census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))

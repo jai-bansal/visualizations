@@ -45,7 +45,7 @@ ax1.pie(sizes, labels = labels, autopct = '%1.1f%%')
 # Remove weird default pie chart tilt.
 plt.axis('equal')
 
-# Set plot and axes titles.
+# Set plot titles.
 plt.title('Selected State 2010 Population (in thousands) and Percentage', fontweight = 'bold')
 
 # Adjust plot margins.

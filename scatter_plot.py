@@ -59,31 +59,27 @@ plt.scatter(census_subset['Year'].unique().tolist(), census_subset[census_subset
 # Remove ticks from both axes.
 ax1.tick_params(axis = 'both', length = 0)
 
+# Set x-axis and y-axis limits.
+plt.xlim([1955, 2005])
+plt.ylim([0, 22000])
+
+# Remove first and last x-axis label (not needed).
+ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)
+ax1.xaxis.get_major_ticks()[-1].label1.set_visible(False)
+
 # Set x-axis and y-axis label text to black.
 ax1.tick_params(axis = 'both', colors = 'black')
-
-# Set y-axis limits.
-plt.ylim([0, 20000])
 
 # Set plot and axes titles.
 plt.title('Selected State Populations (in thousands) Over Time', fontweight = 'bold')
 plt.xlabel('Year', fontweight = 'bold', fontsize = 12.5, color = 'black')
 plt.ylabel('Population (in thousands)', fontweight = 'bold', fontsize = 12.5, color = 'black')
 
-##best
-##	center
-##	right
-##	upper right
-##	lower center
-##	center left
-##	lower right
-##	upper left
-##	upper center
-##	lower left
-##	center right
+# Adjust plot margins.
+plt.subplots_adjust(left = 0.11, bottom = 0.09, right = 0.76, top = 0.93)
 
 # Add legend.
-plt.legend(bbox_to_anchor = (1.35, 0.7))
+plt.legend(bbox_to_anchor = (1.375, 0.625), scatterpoints = 1)
 
 # Show plot.
 plt.show()

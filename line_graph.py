@@ -54,7 +54,6 @@ ax1.scatter(census_subset['Year'].unique().tolist(), census_subset[census_subset
 ax1.scatter(census_subset['Year'].unique().tolist(), census_subset[census_subset['State'] == 'Illinois']['Population'],
          color = 'r', label = None)
 
-
 # Add plot labels.
 ax1.annotate(round(census_subset[(census_subset['State'] == 'Illinois') & (census_subset['Year'] == '1960')]['Population'].values[0], 2),
              xy = (1957, 9950), xytext = (1957, 9950), fontsize = 11)

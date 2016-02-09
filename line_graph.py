@@ -27,7 +27,7 @@ census_data['2000'] = census_data['2000'] / 1000
 census_data['2010'] = census_data['2010'] / 1000
 
 # Subset data.
-census_subset = census_data[census_data['Name'].isin(['Pennsylvania', 'Illinois'])]
+census_subset = census_data[census_data['Name'].isin(['Pennsylvania', 'Illinois'])][['Name', '1960', '1970', '1980', '1990', '2000', '2010']]
 
 # Reset 'census_subset' index.
 census_subset.reset_index(drop = True, inplace = True)

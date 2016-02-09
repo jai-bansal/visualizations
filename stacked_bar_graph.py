@@ -34,7 +34,7 @@ census_data['2010'] = census_data['2010'] / 1000
 great_lakes = ['Wisconsin', 'Michigan', 'Illinois', 'Indiana', 'Ohio']
 
 # Subset data.
-census_subset = census_data[census_data['Name'].isin(great_lakes)]
+census_subset = census_data[census_data['Name'].isin(great_lakes)][['Name', '1960', '1970', '1980', '1990', '2000', '2010']]
 
 # Melt 'census_subset' to allow stacked bar graph and change column names.
 census_subset = pd.melt(census_subset, id_vars = 'Name')

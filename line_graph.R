@@ -8,6 +8,7 @@
 library(data.table)
 library(reshape2)
 library(ggplot2)
+library(ggthemes)
 
 # Load data.
 census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))

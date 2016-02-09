@@ -2,16 +2,17 @@
 
 # A description of 'census_data.csv' can be found in 'census_data_scrape_and_process.R'.
 # To avoid an overwhelming plot, I will be using a subset of 'census_data.csv' consisting of
-# all observations for the 'Southwest' region.
+# all observations for the 'Great Lakes' region.
 
 # This region is defined by the Bureau of Economic Analysis and can be viewed at the url below:
 # https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States
 
-# The 'Southwest' region consists of Arizona, New Mexico, Texas, and Oklahoma.
+# The 'Great Lakes' region as defined by the Bureau of Economic Analysis contains Wisconsin, Michigan, Illinois, Indiana, and Ohio.
 
 # Load packages.
 library(data.table)
 library(ggplot2)
+library(reshape2)
 
 # Load data.
 census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
@@ -19,11 +20,11 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
 #####
 # SUBSET/PROCESS DATA.
 
-  # Define 'Southwest' region.
-  southwest = c('Arizona', 'New Mexico', 'Texas', 'Oklahoma')
+  # Define 'Great Lakes' region.
+  great_lakes = c('Wisconsin', 'Michigan', 'Illinois', 'Indiana', 'Ohio')
   
   # Subset data.
-  census_subset = census_data[Name %in% southwest]
+  census_subset = census_data[Name %in% great_lakes]
   
   # Divide population values by 1000 for easier graph viewing.
   census_subset$`1960` = census_subset$`1960` / 1000
@@ -33,7 +34,7 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   census_subset$`2000` = census_subset$`2000` / 1000
   census_subset$`2010` = census_subset$`2010` / 1000
 
-  # Melt 'census_subset' to allow motion chart.
+  # Melt 'census_subset' to allow stacked bar graph.
   census_subset = melt(census_subset, id = 'Name')
   
   # Rename columns of 'census_data'.
@@ -68,6 +69,6 @@ ggplot(data = census_subset, aes(x = Year, y = Population, fill = State, order =
                                   size = 15), 
          legend.title = element_text(size = 13), 
          legend.text = element_text(size = 12)) +
-    ggtitle('Southwestern Region Population (in thousands) by Year and State') +
+    ggtitle('Great Lakes Region Population (in thousands) by Year and State') +
     xlab('Year') +
     ylab('Population (in thousands)')

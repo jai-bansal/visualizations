@@ -12,6 +12,10 @@
 # Import modules.
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib import style
+
+# Set style.
+style.use('seaborn-poster')
 
 # Load data.
 census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')

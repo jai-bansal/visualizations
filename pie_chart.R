@@ -59,12 +59,12 @@ guides(fill = guide_legend(title = 'Population')) +
 theme_few() +
 theme(axis.ticks = element_blank(), 
       axis.text.x = element_text(color = 'black', 
-                                 size = 14), 
+                                 size = 16), 
       plot.title = element_text(face = 'bold', 
-                                size = 16),
+                                size = 18),
       panel.background = element_rect(fill = 'lightgrey', 
                                       colour = 'lightgrey'), 
-      legend.text = element_text(size = 13), 
+      legend.text = element_text(size = 15), 
       legend.title = element_text(size = 14)) +
 scale_y_continuous(breaks = census_subset$label_locations, 
                    labels = census_subset$Name) +

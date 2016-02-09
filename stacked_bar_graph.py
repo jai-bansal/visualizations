@@ -7,7 +7,7 @@
 # This region is defined by the Bureau of Economic Analysis and can be viewed at the url below:
 # https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States
 
-# The 'Great Lakes' region as defined by the Bureau of Economic Analysis contains Wisconsin, Indiana, Illinois, Indiana, and Ohio.
+# The 'Great Lakes' region as defined by the Bureau of Economic Analysis contains Wisconsin, Michigan, Illinois, Indiana, and Ohio.
 
 # Import modules.
 import pandas as pd

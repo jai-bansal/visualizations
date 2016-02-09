@@ -40,17 +40,20 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
 #####  
 # Plot data.
 ggplot(data = census_subset, aes(x = Year, y = Population, color = State, shape = State)) +
-  geom_point(size = 3) +
-  theme(axis.text.x = element_text(color = 'black'), 
-        axis.text.y = element_text(color = 'black'), 
+  geom_point(size = 4) +
+  scale_y_continuous(breaks = seq(2500, 20000, by = 2500)) +
+  theme(axis.text.x = element_text(color = 'black', 
+                                   size = 14), 
+        axis.text.y = element_text(color = 'black', 
+                                   size = 14), 
         axis.title.x = element_text(face = 'bold', 
-                                    size = 13), 
+                                    size = 14), 
         axis.title.y = element_text(face = 'bold', 
-                                    size = 13), 
+                                    size = 14), 
         plot.title = element_text(face = 'bold',
-                                  size = 15), 
-        legend.title = element_text(size = 13), 
-        legend.text = element_text(size = 12)) +
+                                  size = 16), 
+        legend.title = element_text(size = 14), 
+        legend.text = element_text(size = 13)) +
   ggtitle('Selected State Populations (in thousands) Over Time') +
   xlab('Year') +
   ylab('Population (in thousands)')

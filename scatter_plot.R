@@ -52,8 +52,8 @@ ggplot(data = census_subset, aes(x = Year, y = Population, color = State, shape 
                                     size = 14), 
         plot.title = element_text(face = 'bold',
                                   size = 16), 
-        legend.title = element_text(size = 14), 
-        legend.text = element_text(size = 13)) +
+        legend.title = element_text(size = 15), 
+        legend.text = element_text(size = 14)) +
   ggtitle('Selected State Populations (in thousands) Over Time') +
   xlab('Year') +
   ylab('Population (in thousands)')

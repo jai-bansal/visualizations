@@ -30,7 +30,7 @@ census_data['2010'] = census_data['2010'] / 1000
 states = ['North Carolina', 'Maryland', 'New Jersey', 'Pennsylvania', 'Virginia', 'New York']
 
 # Create data subset (specified above).
-census_subset = census_data[census_data['Name'].isin(states)]
+census_subset = census_data[census_data['Name'].isin(states)][['Name', '1960', '1970', '1980', '1990', '2000', '2010']]
 
 # Melt 'census_subset' to allow line graph and rename columns.
 census_subset = pd.melt(census_subset, id_vars = 'Name')

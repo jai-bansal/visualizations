@@ -30,7 +30,7 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
 ggplot(data = census_subset, aes(x = Name, y = `2010`, fill = Name)) + 
   geom_bar(stat = 'identity') + 
   theme(legend.position = 'none') + 
-  scale_y_continuous(breaks = seq(0, 12500, 2500))
+  scale_y_continuous(breaks = seq(0, 12500, 2500)) +
   geom_text(aes(label = round(`2010`, 1)), 
             vjust = 2) +
   theme(axis.text.x = element_text(color = 'black', 

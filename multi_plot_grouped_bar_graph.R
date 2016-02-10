@@ -61,7 +61,7 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
             geom_bar(aes(fill = Name), 
                      position = 'dodge', 
                      stat = 'identity', 
-                     width = 1) +
+                     width = 0.9) +
             scale_y_continuous(breaks = seq(0, 25, by = 5), limits = c(0, 25)) +
             theme(axis.text.x =  element_text(color = 'black', 
                                       size = 14), 
@@ -86,7 +86,7 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
             geom_bar(aes(fill = Name), 
                      position = 'dodge', 
                      stat = 'identity',  
-                     width = (1/3)) +
+                     width = 0.3) +
             scale_y_continuous(breaks = seq(0, 25, by = 5), limits = c(0, 25)) +
             scale_fill_manual(values = 'orange') +
             theme(axis.text.x =  element_text(color = 'black', 

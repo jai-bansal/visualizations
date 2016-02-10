@@ -14,7 +14,8 @@ from matplotlib import style
 style.use('seaborn-talk')
 
 # Load data.
-census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')
+census_data = pd.read_csv('census_data.csv',
+                          encoding = 'latin-1')
 
 # SUBSET/PROCESS DATA.
 
@@ -40,19 +41,26 @@ labels = census_subset['Name']
 sizes = census_subset['2010']
 
 # Add pie chart data.
-ax1.pie(sizes, labels = labels, autopct = '%1.1f%%')
+ax1.pie(sizes,
+        labels = labels,
+        autopct = '%1.1f%%')
 
 # Remove weird default pie chart tilt.
 plt.axis('equal')
 
 # Set plot titles.
-plt.title('Selected State 2010 Population (in thousands) and Percentage', fontweight = 'bold')
+plt.title('Selected State 2010 Population (in thousands) and Percentage',
+          fontweight = 'bold')
 
 # Adjust plot margins.
-plt.subplots_adjust(left = 0.25, bottom = 0.22, right = 0.67, top = 0.95)
+plt.subplots_adjust(left = 0.25,
+                    bottom = 0.22,
+                    right = 0.67,
+                    top = 0.95)
 
 # Add legend.
-plt.legend(labels = census_subset['2010'].round(1), bbox_to_anchor = (1.6, 0.675))
+plt.legend(labels = census_subset['2010'].round(1),
+           bbox_to_anchor = (1.6, 0.675))
 
 # Show plot.
 plt.show()

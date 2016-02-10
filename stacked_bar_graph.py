@@ -18,7 +18,8 @@ from matplotlib import style
 style.use('seaborn-poster')
 
 # Load data.
-census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')
+census_data = pd.read_csv('census_data.csv',
+                          encoding = 'latin-1')
 
 # SUBSET/PROCESS DATA.
 
@@ -37,7 +38,8 @@ great_lakes = ['Wisconsin', 'Michigan', 'Illinois', 'Indiana', 'Ohio']
 census_subset = census_data[census_data['Name'].isin(great_lakes)][['Name', '1960', '1970', '1980', '1990', '2000', '2010']]
 
 # Melt 'census_subset' to allow stacked bar graph and change column names.
-census_subset = pd.melt(census_subset, id_vars = 'Name')
+census_subset = pd.melt(census_subset,
+                        id_vars = 'Name')
 census_subset.columns = ['State', 'Year', 'Population']
 
 # Create new data subset 'plot_help' to help with plotting.
@@ -45,7 +47,8 @@ census_subset.columns = ['State', 'Year', 'Population']
 plot_help = census_subset
 
 # Un-melt 'plot_help' so that each column contains the populations for one state.
-plot_help = plot_help.pivot(index = 'Year', columns = 'State')
+plot_help = plot_help.pivot(index = 'Year',
+                            columns = 'State')
 
 # Add 'Wisconsin' and 'Michigan' populations.
 plot_help['wi_mi'] = plot_help['Population']['Wisconsin'] + plot_help['Population']['Michigan']
@@ -59,7 +62,6 @@ plot_help['wi_mi_il_in'] = plot_help['Population']['Wisconsin'] + plot_help['Pop
 # Add all state populations together.
 plot_help['all'] = plot_help['Population']['Wisconsin'] + plot_help['Population']['Michigan'] + plot_help['Population']['Illinois'] + plot_help['Population']['Indiana'] + plot_help['Population']['Ohio']
 
-
 # PLOT DATA.
 
 # Create figure and subplot.
@@ -67,22 +69,49 @@ fig = plt.figure()
 ax1 = fig.add_subplot(1, 1, 1)
 
 # Plot bars for each state.
-ax1.bar(range(0, 6), census_subset[census_subset['State'] == 'Wisconsin']['Population'], label = 'Wisconsin', color = '#ff5050',
-        align = 'center', zorder = 3)
-ax1.bar(range(0, 6), census_subset[census_subset['State'] == 'Michigan']['Population'], label = 'Michigan', color = '#ffcc00',
-        bottom = plot_help['Population']['Wisconsin'], align = 'center', zorder = 3)
-ax1.bar(range(0, 6), census_subset[census_subset['State'] == 'Illinois']['Population'], label = 'Illinois', color = '#009933',
-        bottom = plot_help['wi_mi'], align = 'center', zorder = 3)
-ax1.bar(range(0, 6), census_subset[census_subset['State'] == 'Indiana']['Population'], label = 'Indiana', color = '#e93fc7',
-        bottom = plot_help['wi_mi_il'], align = 'center', zorder = 3)
-ax1.bar(range(0, 6), census_subset[census_subset['State'] == 'Ohio']['Population'], label = 'Ohio', color = '#8076ef',
-        bottom = plot_help['wi_mi_il_in'], align = 'center', zorder = 3)
+ax1.bar(range(0, 6),
+        census_subset[census_subset['State'] == 'Wisconsin']['Population'],
+        label = 'Wisconsin',
+        color = '#ff5050',
+        align = 'center',
+        zorder = 3)
+ax1.bar(range(0, 6),
+        census_subset[census_subset['State'] == 'Michigan']['Population'],
+        label = 'Michigan',
+        color = '#ffcc00',
+        bottom = plot_help['Population']['Wisconsin'],
+        align = 'center',
+        zorder = 3)
+ax1.bar(range(0, 6),
+        census_subset[census_subset['State'] == 'Illinois']['Population'],
+        label = 'Illinois',
+        color = '#009933',
+        bottom = plot_help['wi_mi'],
+        align = 'center',
+        zorder = 3)
+ax1.bar(range(0, 6),
+        census_subset[census_subset['State'] == 'Indiana']['Population'],
+        label = 'Indiana',
+        color = '#e93fc7',
+        bottom = plot_help['wi_mi_il'],
+        align = 'center',
+        zorder = 3)
+ax1.bar(range(0, 6),
+        census_subset[census_subset['State'] == 'Ohio']['Population'],
+        label = 'Ohio',
+        color = '#8076ef',
+        bottom = plot_help['wi_mi_il_in'],
+        align = 'center',
+        zorder = 3)
 
 # Fix x-axis labels.
-plt.xticks(range(0, 6), [1960, 1970, 1980, 1990, 2000, 2010], horizontalalignment = 'center')
+plt.xticks(range(0, 6),
+           [1960, 1970, 1980, 1990, 2000, 2010],
+           horizontalalignment = 'center')
 
 # Remove ticks from both axes.
-ax1.tick_params(axis = 'both', length = 0)
+ax1.tick_params(axis = 'both',
+                length = 0)
 
 # Remove last y-axis label (not needed).
 ax1.yaxis.get_major_ticks()[-1].label1.set_visible(False)
@@ -92,136 +121,187 @@ ax1.yaxis.get_major_ticks()[-1].label1.set_visible(False)
 # This is messy and tedious. I don't think matplotlib pyplot is a good tool at all for this.
 
 # Wisconsin.
-ax1.annotate(round(plot_help['Population']['Wisconsin']['1960'], 1), xy = (0, (0.5 * plot_help['Population']['Wisconsin']['1960'])),
-             xytext = (0, (0.5 * plot_help['Population']['Wisconsin']['1960'])), horizontalalignment = 'center', verticalalignment = 'center')
-ax1.annotate(round(plot_help['Population']['Wisconsin']['1970'], 1), xy = (1, (0.5 * plot_help['Population']['Wisconsin']['1970'])),
-             xytext = (1, (0.5 * plot_help['Population']['Wisconsin']['1970'])), horizontalalignment = 'center', verticalalignment = 'center')
-ax1.annotate(round(plot_help['Population']['Wisconsin']['1980'], 1), xy = (2, (0.5 * plot_help['Population']['Wisconsin']['1980'])),
-             xytext = (2, (0.5 * plot_help['Population']['Wisconsin']['1980'])), horizontalalignment = 'center', verticalalignment = 'center')
-ax1.annotate(round(plot_help['Population']['Wisconsin']['1990'], 1), xy = (3, (0.5 * plot_help['Population']['Wisconsin']['1990'])),
-             xytext = (3, (0.5 * plot_help['Population']['Wisconsin']['1990'])), horizontalalignment = 'center', verticalalignment = 'center')
-ax1.annotate(round(plot_help['Population']['Wisconsin']['2000'], 1), xy = (4, (0.5 * plot_help['Population']['Wisconsin']['2000'])),
-             xytext = (4, (0.5 * plot_help['Population']['Wisconsin']['2000'])), horizontalalignment = 'center', verticalalignment = 'center')
-ax1.annotate(round(plot_help['Population']['Wisconsin']['2010'], 1), xy = (5, (0.5 * plot_help['Population']['Wisconsin']['2010'])),
-             xytext = (5, (0.5 * plot_help['Population']['Wisconsin']['2010'])), horizontalalignment = 'center', verticalalignment = 'center')
+ax1.annotate(round(plot_help['Population']['Wisconsin']['1960'], 1),
+             xy = (0, (0.5 * plot_help['Population']['Wisconsin']['1960'])),
+             xytext = (0, (0.5 * plot_help['Population']['Wisconsin']['1960'])),
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
+ax1.annotate(round(plot_help['Population']['Wisconsin']['1970'], 1),
+             xy = (1, (0.5 * plot_help['Population']['Wisconsin']['1970'])),
+             xytext = (1, (0.5 * plot_help['Population']['Wisconsin']['1970'])),
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
+ax1.annotate(round(plot_help['Population']['Wisconsin']['1980'], 1),
+             xy = (2, (0.5 * plot_help['Population']['Wisconsin']['1980'])),
+             xytext = (2, (0.5 * plot_help['Population']['Wisconsin']['1980'])),
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
+ax1.annotate(round(plot_help['Population']['Wisconsin']['1990'], 1),
+             xy = (3, (0.5 * plot_help['Population']['Wisconsin']['1990'])),
+             xytext = (3, (0.5 * plot_help['Population']['Wisconsin']['1990'])),
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
+ax1.annotate(round(plot_help['Population']['Wisconsin']['2000'], 1),
+             xy = (4, (0.5 * plot_help['Population']['Wisconsin']['2000'])),
+             xytext = (4, (0.5 * plot_help['Population']['Wisconsin']['2000'])),
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
+ax1.annotate(round(plot_help['Population']['Wisconsin']['2010'], 1),
+             xy = (5, (0.5 * plot_help['Population']['Wisconsin']['2010'])),
+             xytext = (5, (0.5 * plot_help['Population']['Wisconsin']['2010'])),
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 
 # Michigan.
 ax1.annotate(round(plot_help['Population']['Michigan']['1960'], 1),
              xy = (0, 0.5 * (plot_help['Population']['Wisconsin']['1960'] + plot_help['wi_mi']['1960'])),
              xytext = (0, 0.5 * (plot_help['Population']['Wisconsin']['1960'] + plot_help['wi_mi']['1960'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Michigan']['1970'], 1),
              xy = (1, 0.5 * (plot_help['Population']['Wisconsin']['1970'] + plot_help['wi_mi']['1970'])),
              xytext = (1, 0.5 * (plot_help['Population']['Wisconsin']['1970'] + plot_help['wi_mi']['1970'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Michigan']['1980'], 1),
              xy = (2, 0.5 * (plot_help['Population']['Wisconsin']['1980'] + plot_help['wi_mi']['1980'])),
              xytext = (2, 0.5 * (plot_help['Population']['Wisconsin']['1980'] + plot_help['wi_mi']['1980'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Michigan']['1990'], 1),
              xy = (3, 0.5 * (plot_help['Population']['Wisconsin']['1990'] + plot_help['wi_mi']['1990'])),
              xytext = (3, 0.5 * (plot_help['Population']['Wisconsin']['1990'] + plot_help['wi_mi']['1990'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Michigan']['2000'], 1),
              xy = (4, 0.5 * (plot_help['Population']['Wisconsin']['2000'] + plot_help['wi_mi']['2000'])),
              xytext = (4, 0.5 * (plot_help['Population']['Wisconsin']['2000'] + plot_help['wi_mi']['2000'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Michigan']['2010'], 1),
              xy = (5, 0.5 * (plot_help['Population']['Wisconsin']['2010'] + plot_help['wi_mi']['2010'])),
              xytext = (5, 0.5 * (plot_help['Population']['Wisconsin']['2010'] + plot_help['wi_mi']['2010'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 
 # Illinois.
 ax1.annotate(round(plot_help['Population']['Illinois']['1960'], 1),
              xy = (0, 0.5 * (plot_help['wi_mi']['1960'] + plot_help['wi_mi_il']['1960'])),
              xytext = (0, 0.5 * (plot_help['wi_mi']['1960'] + plot_help['wi_mi_il']['1960'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Illinois']['1970'], 1),
              xy = (1, 0.5 * (plot_help['wi_mi']['1970'] + plot_help['wi_mi_il']['1970'])),
              xytext = (1, 0.5 * (plot_help['wi_mi']['1970'] + plot_help['wi_mi_il']['1970'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Illinois']['1980'], 1),
              xy = (2, 0.5 * (plot_help['wi_mi']['1980'] + plot_help['wi_mi_il']['1980'])),
              xytext = (2, 0.5 * (plot_help['wi_mi']['1980'] + plot_help['wi_mi_il']['1980'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Illinois']['1990'], 1),
              xy = (3, 0.5 * (plot_help['wi_mi']['1990'] + plot_help['wi_mi_il']['1990'])),
              xytext = (3, 0.5 * (plot_help['wi_mi']['1990'] + plot_help['wi_mi_il']['1990'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Illinois']['2000'], 1),
              xy = (4, 0.5 * (plot_help['wi_mi']['2000'] + plot_help['wi_mi_il']['2000'])),
              xytext = (4, 0.5 * (plot_help['wi_mi']['2000'] + plot_help['wi_mi_il']['2000'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Illinois']['2010'], 1),
              xy = (5, 0.5 * (plot_help['wi_mi']['2010'] + plot_help['wi_mi_il']['2010'])),
              xytext = (5, 0.5 * (plot_help['wi_mi']['2010'] + plot_help['wi_mi_il']['2010'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 
 # Indiana.
 ax1.annotate(round(plot_help['Population']['Indiana']['1960'], 1),
              xy = (0, 0.5 * (plot_help['wi_mi_il_in']['1960'] + plot_help['wi_mi_il']['1960'])),
              xytext = (0, 0.5 * (plot_help['wi_mi_il_in']['1960'] + plot_help['wi_mi_il']['1960'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Indiana']['1970'], 1),
              xy = (1, 0.5 * (plot_help['wi_mi_il_in']['1970'] + plot_help['wi_mi_il']['1970'])),
              xytext = (1, 0.5 * (plot_help['wi_mi_il_in']['1970'] + plot_help['wi_mi_il']['1970'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Indiana']['1980'], 1),
              xy = (2, 0.5 * (plot_help['wi_mi_il_in']['1980'] + plot_help['wi_mi_il']['1980'])),
              xytext = (2, 0.5 * (plot_help['wi_mi_il_in']['1980'] + plot_help['wi_mi_il']['1980'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Indiana']['1990'], 1),
              xy = (3, 0.5 * (plot_help['wi_mi_il_in']['1990'] + plot_help['wi_mi_il']['1990'])),
              xytext = (3, 0.5 * (plot_help['wi_mi_il_in']['1990'] + plot_help['wi_mi_il']['1990'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Indiana']['2000'], 1),
              xy = (4, 0.5 * (plot_help['wi_mi_il_in']['2000'] + plot_help['wi_mi_il']['2000'])),
              xytext = (4, 0.5 * (plot_help['wi_mi_il_in']['2000'] + plot_help['wi_mi_il']['2000'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Indiana']['2010'], 1),
              xy = (5, 0.5 * (plot_help['wi_mi_il_in']['2010'] + plot_help['wi_mi_il']['2010'])),
              xytext = (5, 0.5 * (plot_help['wi_mi_il_in']['2010'] + plot_help['wi_mi_il']['2010'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 
 # Ohio.
 ax1.annotate(round(plot_help['Population']['Ohio']['1960'], 1),
              xy = (0, 0.5 * (plot_help['wi_mi_il_in']['1960'] + plot_help['all']['1960'])),
              xytext = (0, 0.5 * (plot_help['wi_mi_il_in']['1960'] + plot_help['all']['1960'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Ohio']['1970'], 1),
              xy = (1, 0.5 * (plot_help['wi_mi_il_in']['1970'] + plot_help['all']['1970'])),
              xytext = (1, 0.5 * (plot_help['wi_mi_il_in']['1970'] + plot_help['all']['1970'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Ohio']['1980'], 1),
              xy = (2, 0.5 * (plot_help['wi_mi_il_in']['1980'] + plot_help['all']['1980'])),
              xytext = (2, 0.5 * (plot_help['wi_mi_il_in']['1980'] + plot_help['all']['1980'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Ohio']['1990'], 1),
              xy = (3, 0.5 * (plot_help['wi_mi_il_in']['1990'] + plot_help['all']['1990'])),
              xytext = (3, 0.5 * (plot_help['wi_mi_il_in']['1990'] + plot_help['all']['1990'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Ohio']['2000'], 1),
              xy = (4, 0.5 * (plot_help['wi_mi_il_in']['2000'] + plot_help['all']['2000'])),
              xytext = (4, 0.5 * (plot_help['wi_mi_il_in']['2000'] + plot_help['all']['2000'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 ax1.annotate(round(plot_help['Population']['Ohio']['2010'], 1),
              xy = (5, 0.5 * (plot_help['wi_mi_il_in']['2010'] + plot_help['all']['2010'])),
              xytext = (5, 0.5 * (plot_help['wi_mi_il_in']['2010'] + plot_help['all']['2010'])),
-             horizontalalignment = 'center', verticalalignment = 'center')
+             horizontalalignment = 'center',
+             verticalalignment = 'center')
 
 # Set plot and axes titles.
-plt.title('Great Lakes States Population (in thousands) by Year and State', fontweight = 'bold')
-plt.xlabel('Year', fontweight = 'bold', fontsize = 12.5)
-plt.ylabel('Population (in thousands)', fontweight = 'bold', fontsize = 12.5)
+plt.title('Great Lakes States Population (in thousands) by Year and State',
+          fontweight = 'bold')
+plt.xlabel('Year',
+           fontweight = 'bold',
+           fontsize = 12.5)
+plt.ylabel('Population (in thousands)',
+           fontweight = 'bold',
+           fontsize = 12.5)
 
 # Add grid.
 ax1.grid(zorder = 0)
 
 # Add legend.
-plt.legend(loc = 'upper left', bbox_to_anchor = (1, 0.6))
+plt.legend(loc = 'upper left',
+           bbox_to_anchor = (1, 0.6))
 
 # Adjust plot margins.
-plt.subplots_adjust(left = 0.12, bottom = 0.09, right = 0.76, top = 0.93)
+plt.subplots_adjust(left = 0.12,
+                    bottom = 0.09,
+                    right = 0.76,
+                    top = 0.93)
 
 # Show plot.
 plt.show()

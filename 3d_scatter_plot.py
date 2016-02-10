@@ -14,7 +14,8 @@ from matplotlib import style
 style.use('seaborn-pastel')
 
 # Load data.
-census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')
+census_data = pd.read_csv('census_data.csv',
+                          encoding = 'latin-1')
 
 # SUBSET/PROCESS DATA.
 
@@ -37,31 +38,43 @@ areas.columns = ['State', 'Area (sq. miles)']
 census_subset = census_data[census_data['Name'].isin(states)][['Name', '1960', '1970', '1980', '1990', '2000', '2010']]
 
 # Melt 'census_subset' to allow 3 dimensional scatter plot and rename columns.
-census_subset = pd.melt(census_subset, id_vars = 'Name')
+census_subset = pd.melt(census_subset,
+                        id_vars = 'Name')
 census_subset.columns = ['State', 'Year', 'Population']
 
 # Add 'areas' to 'census_subset'.
-census_subset = census_subset.merge(areas, how = 'left', on = 'State')
+census_subset = census_subset.merge(areas,
+                                    how = 'left',
+                                    on = 'State')
 
 # PLOT DATA.
 
 # Create figure and subplot.
 fig = plt.figure()
-ax1 = fig.add_subplot(1, 1, 1, projection = '3d')
+ax1 = fig.add_subplot(1, 1, 1,
+                      projection = '3d')
 
 # Add scatter plot points.
-ax1.scatter([1,2,3,4,5,6], census_subset[census_subset['State'] == 'Maryland']['Population'],
+ax1.scatter([1,2,3,4,5,6],
+            census_subset[census_subset['State'] == 'Maryland']['Population'],
             census_subset[census_subset['State'] == 'Maryland']['Area (sq. miles)'],
-            label = 'Maryland', c = '#ffcc00')
-ax1.scatter([1,2,3,4,5,6], census_subset[census_subset['State'] == 'Pennsylvania']['Population'],
+            label = 'Maryland',
+            c = '#ffcc00')
+ax1.scatter([1,2,3,4,5,6],
+            census_subset[census_subset['State'] == 'Pennsylvania']['Population'],
             census_subset[census_subset['State'] == 'Pennsylvania']['Area (sq. miles)'],
-            label = 'Pennsylvania', c = '#614126')
-ax1.scatter([1,2,3,4,5,6], census_subset[census_subset['State'] == 'Virginia']['Population'],
+            label = 'Pennsylvania',
+            c = '#614126')
+ax1.scatter([1,2,3,4,5,6],
+            census_subset[census_subset['State'] == 'Virginia']['Population'],
             census_subset[census_subset['State'] == 'Virginia']['Area (sq. miles)'],
-            label = 'Virginia', c = '#000099')
-ax1.scatter([1,2,3,4,5,6], census_subset[census_subset['State'] == 'West Virginia']['Population'],
+            label = 'Virginia',
+            c = '#000099')
+ax1.scatter([1,2,3,4,5,6],
+            census_subset[census_subset['State'] == 'West Virginia']['Population'],
             census_subset[census_subset['State'] == 'West Virginia']['Area (sq. miles)'],
-            label = 'West Virginia', c = '#009933')
+            label = 'West Virginia',
+            c = '#009933')
 
 # Fix x-axis labels.
 ax1.set_xticklabels([1960, 1970, 1980, 1990, 2000, 2010])
@@ -74,12 +87,19 @@ ax1.zaxis.get_major_ticks()[-1].label1.set_visible(False)
 
 # Set plot and axes titles.
 plt.title('Selected State Populations and Areas Over Time')
-plt.xlabel('Year', fontsize = 12.5, color = 'black')
-plt.ylabel('Population (in thousands)', fontsize = 12.5, color = 'black')
-ax1.set_zlabel('Area (square miles)')
+plt.xlabel('Year',
+           fontsize = 12.5,
+           color = 'black')
+plt.ylabel('Population (in thousands)',
+           fontsize = 12.5,
+           color = 'black')
+ax1.set_zlabel('Area (square miles)',
+               fontsize = 12.5,
+               color = 'black')
 
 # Add legend.
-plt.legend(scatterpoints = 1, bbox_to_anchor = (1.45, 0.6))
+plt.legend(scatterpoints = 1,
+           bbox_to_anchor = (1.45, 0.6))
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.12, bottom = 0.08, right = 0.73, top = 0.97)

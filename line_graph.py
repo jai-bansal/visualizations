@@ -14,7 +14,8 @@ from matplotlib import style
 style.use('ggplot')
 
 # Load data.
-census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')
+census_data = pd.read_csv('census_data.csv',
+                          encoding = 'latin-1')
 
 # SUBSET/PROCESS DATA.
 
@@ -30,10 +31,12 @@ census_data['2010'] = census_data['2010'] / 1000
 census_subset = census_data[census_data['Name'].isin(['Pennsylvania', 'Illinois'])][['Name', '1960', '1970', '1980', '1990', '2000', '2010']]
 
 # Reset 'census_subset' index.
-census_subset.reset_index(drop = True, inplace = True)
+census_subset.reset_index(drop = True,
+                          inplace = True)
 
 # Melt 'census_subset' to allow line graph and rename columns.
-census_subset = pd.melt(census_subset, id_vars = 'Name')
+census_subset = pd.melt(census_subset,
+                        id_vars = 'Name')
 census_subset.columns = ['State', 'Year', 'Population']
 
 # PLOT DATA.
@@ -43,51 +46,80 @@ fig = plt.figure()
 ax1 = fig.add_subplot(1, 1, 1)
 
 # Add line data.
-ax1.plot(census_subset['Year'].unique(), census_subset[census_subset['State'] == 'Pennsylvania']['Population'],
-         color = 'b', label = 'Pennsylvania')
-ax1.plot(census_subset['Year'].unique(), census_subset[census_subset['State'] == 'Illinois']['Population'],
-         color = 'r', label = 'Illinois')
+ax1.plot(census_subset['Year'].unique(),
+         census_subset[census_subset['State'] == 'Pennsylvania']['Population'],
+         color = 'b',
+         label = 'Pennsylvania')
+ax1.plot(census_subset['Year'].unique(),
+         census_subset[census_subset['State'] == 'Illinois']['Population'],
+         color = 'r',
+         label = 'Illinois')
 
 # Add points too.
-ax1.scatter(census_subset['Year'].unique().tolist(), census_subset[census_subset['State'] == 'Pennsylvania']['Population'],
-         color = 'b', label = None)
-ax1.scatter(census_subset['Year'].unique().tolist(), census_subset[census_subset['State'] == 'Illinois']['Population'],
-         color = 'r', label = None)
+ax1.scatter(census_subset['Year'].unique().tolist(),
+            census_subset[census_subset['State'] == 'Pennsylvania']['Population'],
+            color = 'b',
+            label = None)
+ax1.scatter(census_subset['Year'].unique().tolist(),
+            census_subset[census_subset['State'] == 'Illinois']['Population'],
+            color = 'r',
+            label = None)
 
 # Add plot labels.
 ax1.annotate(round(census_subset[(census_subset['State'] == 'Illinois') & (census_subset['Year'] == '1960')]['Population'].values[0], 2),
-             xy = (1957, 9950), xytext = (1957, 9950), fontsize = 11)
+             xy = (1957, 9950),
+             xytext = (1957, 9950),
+             fontsize = 11)
 ax1.annotate(round(census_subset[(census_subset['State'] == 'Pennsylvania') & (census_subset['Year'] == '1960')]['Population'].values[0], 2),
-             xy = (1957, 11150), xytext = (1957, 11200), fontsize = 11)
+             xy = (1957, 11150),
+             xytext = (1957, 11200),
+             fontsize = 11)
 ax1.annotate(round(census_subset[(census_subset['State'] == 'Illinois') & (census_subset['Year'] == '2010')]['Population'].values[0], 2),
-             xy = (2006, 12900), xytext = (2006, 12875), fontsize = 11)
+             xy = (2006, 12900),
+             xytext = (2006, 12875),
+             fontsize = 11)
 ax1.annotate(round(census_subset[(census_subset['State'] == 'Pennsylvania') & (census_subset['Year'] == '2010')]['Population'].values[0], 2),
-             xy = (2007, 12500), xytext = (2007, 12500), fontsize = 11)
+             xy = (2007, 12500),
+             xytext = (2007, 12500),
+             fontsize = 11)
 
 # Set x-axis and y-axis limits.
 plt.ylim([9900, 13100])
 plt.xlim([1955, 2015])
 
 # Set x-axis and y-axis label text to black and change font size.
-ax1.tick_params(axis = 'both', colors = 'black', labelsize = 12)
+ax1.tick_params(axis = 'both',
+                colors = 'black',
+                labelsize = 12)
 
 # Remove first and last x-axis label (not needed).
 ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)
 ax1.xaxis.get_major_ticks()[-1].label1.set_visible(False)
 
 # Remove ticks from both axes.
-ax1.tick_params(axis = 'both', length = 0)
+ax1.tick_params(axis = 'both',
+                length = 0)
 
 # Set plot and axes titles.
-plt.title('Population (in thousands) Over Time for 2 States', fontweight = 'bold')
-plt.xlabel('Year', fontweight = 'bold', fontsize = 12.5, color = 'black')
-plt.ylabel('Population (in thousands)', fontweight = 'bold', fontsize = 12.5, color = 'black')
+plt.title('Population (in thousands) Over Time for 2 States',
+          fontweight = 'bold')
+plt.xlabel('Year',
+           fontweight = 'bold',
+           fontsize = 12.5,
+           color = 'black')
+plt.ylabel('Population (in thousands)',
+           fontweight = 'bold',
+           fontsize = 12.5,
+           color = 'black')
 
 # Add legend.
 ax1.legend(loc = 2)
 
 # Adjust plot margins.
-plt.subplots_adjust(left = 0.13, bottom = 0.1, right = 0.98, top = 0.93)
+plt.subplots_adjust(left = 0.13,
+                    bottom = 0.1,
+                    right = 0.98,
+                    top = 0.93)
 
 # Show plot.
 plt.show()

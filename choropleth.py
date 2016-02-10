@@ -14,7 +14,8 @@ from matplotlib import style
 style.use('seaborn-talk')
 
 # Load data.
-census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')
+census_data = pd.read_csv('census_data.csv',
+                          encoding = 'latin-1')
 
 # SUBSET/PROCESS DATA.
 
@@ -31,8 +32,14 @@ census_subset['2010'] = census_subset['2010'] / 1000
 
 # Create map.
 # Lambert Conformal map of lower 48 states.
-m = Basemap(llcrnrlon=-119,llcrnrlat=22,urcrnrlon=-64,urcrnrlat=49,
-            projection='lcc',lat_1=33,lat_2=45,lon_0=-95)
+m = Basemap(llcrnrlon=-119,
+            llcrnrlat=22,
+            urcrnrlon=-64,
+            urcrnrlat=49,
+            projection='lcc',
+            lat_1=33,
+            lat_2=45,
+            lon_0=-95)
 # draw state boundaries.
 # data from U.S Census Bureau
 # http://www.census.gov/geo/www/cob/st2000.html

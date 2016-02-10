@@ -11,7 +11,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load data.
-census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')
+census_data = pd.read_csv('census_data.csv',
+                          encoding = 'latin-1')
 
 # SUBSET/PROCESS DATA.
 
@@ -23,7 +24,8 @@ census_subset = census_data[census_data['Name'].isin(states)]
 census_subset = census_subset[['Name', '2010']]
 
 # Reset 'census_subset' index.
-census_subset.reset_index(drop = True, inplace = True)
+census_subset.reset_index(drop = True,
+                          inplace = True)
 
 # Divide population values by 1000 for easier graph viewing.
 census_subset['2010'] = census_subset['2010'] / 1000
@@ -43,7 +45,9 @@ shift = 1.3
 
 # Insert plot data.
 # This must be done in an absurd way since 'matplotlib.pyplot' can't handle strings.
-bars = ax1.bar(np.arange(0, (shift * len(census_subset['2010'])), shift),
+bars = ax1.bar(np.arange(0,
+                         (shift * len(census_subset['2010'])),
+                         shift),
                census_subset['2010'],
                align = 'center',
                color = colors,
@@ -58,23 +62,34 @@ for i in range(0, len(census_subset['Name'])):
              verticalalignment = 'center')
 
 # Remove ticks from both axes.
-ax1.tick_params(axis = 'both', length = 0)
+ax1.tick_params(axis = 'both',
+                length = 0)
 
 # Fix x-axis labels.
-plt.xticks(np.arange(0, (shift * len(census_subset['2010'])), shift),
+plt.xticks(np.arange(0,
+                     (shift * len(census_subset['2010'])),
+                     shift),
            states,
            horizontalalignment = 'center')
 
 # Set plot and axes titles.
-plt.title('Selected State Populations in 2010 (in thousands)', fontweight = 'bold')
-plt.xlabel('State', fontweight = 'bold', fontsize = 12.5)
-plt.ylabel('2010 Population (in thousands)', fontweight = 'bold', fontsize = 12.5)
+plt.title('Selected State Populations in 2010 (in thousands)',
+          fontweight = 'bold')
+plt.xlabel('State',
+           fontweight = 'bold',
+           fontsize = 12.5)
+plt.ylabel('2010 Population (in thousands)',
+           fontweight = 'bold',
+           fontsize = 12.5)
 
 # Add grid.
 ax1.grid(zorder = 0)
 
 # Adjust plot margins.
-plt.subplots_adjust(left = 0.12, bottom = 0.09, right = 0.98, top = 0.94)
+plt.subplots_adjust(left = 0.12,
+                    bottom = 0.09,
+                    right = 0.98,
+                    top = 0.94)
 
 # Show plot.      
 plt.show()

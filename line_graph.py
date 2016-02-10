@@ -70,7 +70,6 @@ plt.xlim([1955, 2015])
 
 # Set x-axis and y-axis label text to black and change font size.
 ax1.tick_params(axis = 'both', colors = 'black', labelsize = 12)
-ax1.tick_params(axis = 'both', labelsize = 12)
 
 # Remove first and last x-axis label (not needed).
 ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)

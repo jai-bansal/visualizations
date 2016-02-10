@@ -84,9 +84,6 @@ plt.title('Population (in thousands) Over Time for 2 States', fontweight = 'bold
 plt.xlabel('Year', fontweight = 'bold', fontsize = 12.5, color = 'black')
 plt.ylabel('Population (in thousands)', fontweight = 'bold', fontsize = 12.5, color = 'black')
 
-# Add grid.
-ax1.grid(zorder = 0)
-
 # Add legend.
 ax1.legend(loc = 2)
 

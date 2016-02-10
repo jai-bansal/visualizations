@@ -23,7 +23,8 @@ from matplotlib import style
 style.use('ggplot')
 
 # Load data.
-census_data = pd.read_csv('census_data.csv', encoding = 'latin-1')
+census_data = pd.read_csv('census_data.csv',
+                          encoding = 'latin-1')
 
 # SUBSET/PROCESS DATA.
 
@@ -66,22 +67,25 @@ ax1 = fig.add_subplot(2, 1, 1)
 # Add bars for each state to first subplot.
 ax1.bar(range(0, 5),
         census_subset[census_subset['Name'] == 'Delaware']['value'],
-        width = (1/3),
+        width = 0.3,
         color = '#ff5050',
+        edgecolor = 'black',
         label = 'Delaware')
-ax1.bar([(1/3), (4/3), (7/3), (10/3), (13/3)],
+ax1.bar([0.3, 1.3, 2.3, 3.3, 4.3],
         census_subset[census_subset['Name'] == 'Ohio']['value'],
-        width = (1/3),
+        width = 0.3,
         color = '#009933',
+        edgecolor = 'black',
         label = 'Ohio')
-ax1.bar([(2/3), (5/3), (8/3), (11/3), (14/3)],
+ax1.bar([0.6, 1.6, 2.6, 3.6, 4.6],
         census_subset[census_subset['Name'] == 'Vermont']['value'],
-        width = (1/3),
+        width = 0.3,
         color = '#8076ef',
+        edgecolor = 'black',
         label = 'Vermont')
 
 # Fix x-axis labels for first subplot.
-plt.xticks([0.5, 1.5, 2.5, 3.5, 4.5, 5.5],
+plt.xticks([0.45, 1.45, 2.45, 3.45, 4.45, 5.45],
            ['1960s', '1970s', '1980s', '1990s', '2000s'],
            horizontalalignment = 'center')
 
@@ -89,36 +93,44 @@ plt.xticks([0.5, 1.5, 2.5, 3.5, 4.5, 5.5],
 ax1.tick_params(axis = 'both',
                 length = 0)
 
-# Set y-axis limits for first subplot.
+# Set x-axis and y-axis limits for first subplot.
 plt.ylim([0, 25])
 
 # Set title, x-axis, and y-axis labels for first subplot.
 plt.title('Percentage Growth By Decade For Selected States',
           fontweight = 'bold')
-plt.xlabel('Decade',
-           fontweight = 'bold',
-           fontsize = 12.5,
-           color = 'black')
 plt.ylabel('Percentage Growth',
            fontweight = 'bold',
            fontsize = 12.5,
            color = 'black')
 
+# Set x-axis and y-axis label text to black and change font size for first subplot.
+ax1.tick_params(axis = 'both',
+                colors = 'black',
+                labelsize = 12)
+
 # Show legend for first subplot.
 plt.legend()
 
 # Create second subplot.
-ax2 = fig.add_subplot(2, 1, 2)
+ax2 = fig.add_subplot(2, 1, 2,
+                      sharex = ax1)
 
 # Add bar for United States to second subplot.
-ax2.bar([(1/3), (4/3), (7/3), (10/3), (13/3)],
+ax2.bar([0.3, 1.3, 2.3, 3.3, 4.3],
         census_subset[census_subset['Name'] == 'United States']['value'],
-        width = (1/3),
+        width = 0.3,
         color = '#ffcc00',
+        edgecolor = 'black',
         label = 'United States')
 
+# Set x-axis and y-axis label text to black and change font size.
+ax2.tick_params(axis = 'both',
+                colors = 'black',
+                labelsize = 12)
+
 # Fix x-axis labels for second subplot.
-plt.xticks([0.5, 1.5, 2.5, 3.5, 4.5, 5.5],
+plt.xticks([0.45, 1.45, 2.45, 3.45, 4.45],
            ['1960s', '1970s', '1980s', '1990s', '2000s'],
            horizontalalignment = 'center')
 
@@ -143,6 +155,13 @@ plt.ylabel('Percentage Growth',
 
 # Add legend.
 plt.legend()
+
+# Adjust plot margins.
+plt.subplots_adjust(left = 0.09,
+                    bottom = 0.09,
+                    right = 0.99,
+                    top = 0.94,
+                    hspace = 0.3)
 
 # Show plot.
 plt.show()

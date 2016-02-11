@@ -21,7 +21,10 @@ library(reshape2)
 library(grid)
 
 # Load data.
-census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
+census_data = data.table(read.csv('census_data.csv', 
+                                  header = T, 
+                                  stringsAsFactors = F, 
+                                  check.names = F))
 
 #####
 # SUBSET/PROCESS DATA.
@@ -51,18 +54,22 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   census_subset = census_subset[, .(Name, `1960s_growth`, `1970s_growth`, `1980s_growth`, `1990s_growth`, `2000s_growth`)]
   
   # Melt data to allow plotting.
-  census_subset = melt(census_subset, id = 'Name')
+  census_subset = melt(census_subset, 
+                       id = 'Name')
 
 #####
 # PLOT DATA.
   
   # Create state data plot.
-  plot_1 = ggplot(data = census_subset[Name != 'United States'], aes(x = variable, y = value)) +
+  plot_1 = ggplot(data = census_subset[Name != 'United States'], 
+                  aes(x = variable, 
+                      y = value)) +
             geom_bar(aes(fill = Name), 
                      position = 'dodge', 
                      stat = 'identity', 
                      width = 0.9) +
-            scale_y_continuous(breaks = seq(0, 25, by = 5), limits = c(0, 25)) +
+            scale_y_continuous(breaks = seq(0, 25, by = 5), 
+                               limits = c(0, 25)) +
             theme(axis.text.x =  element_text(color = 'black', 
                                       size = 14), 
                   axis.text.y = element_text(color = 'black', 
@@ -82,12 +89,15 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
             ylab('Percentage Growth')
 
   # Create aggregate United States plot.
-  plot_2 = ggplot(data = census_subset[Name == 'United States'], aes(x = variable, y = value)) +
+  plot_2 = ggplot(data = census_subset[Name == 'United States'], 
+                  aes(x = variable, 
+                      y = value)) +
             geom_bar(aes(fill = Name), 
                      position = 'dodge', 
                      stat = 'identity',  
                      width = 0.3) +
-            scale_y_continuous(breaks = seq(0, 25, by = 5), limits = c(0, 25)) +
+            scale_y_continuous(breaks = seq(0, 25, by = 5), 
+                               limits = c(0, 25)) +
             scale_fill_manual(values = 'orange') +
             theme(axis.text.x =  element_text(color = 'black', 
                                       size = 14), 
@@ -109,4 +119,6 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   
   # Plot both subplots.
   grid.newpage()
-  grid.draw(rbind(ggplotGrob(plot_1), ggplotGrob(plot_2), size = 'last'))
+  grid.draw(rbind(ggplotGrob(plot_1), 
+                  ggplotGrob(plot_2), 
+                  size = 'last'))

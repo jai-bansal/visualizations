@@ -11,7 +11,10 @@ library(ggplot2)
 library(ggthemes)
 
 # Load data.
-census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
+census_data = data.table(read.csv('census_data.csv', 
+                                  header = T, 
+                                  stringsAsFactors = F, 
+                                  check.names = F))
 
 #####
 # SUBSET/PROCESS DATA.
@@ -33,26 +36,36 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   # Reshape data for line graph.
     
     # Transpose 'census_subset'.
-    census_subset_transpose = data.table(t(census_subset), keep.rownames = T)
+    census_subset_transpose = data.table(t(census_subset), 
+                                         keep.rownames = T)
     
     # Set column names for 'census_subset_transpose'.
-    setnames(census_subset_transpose, names(census_subset_transpose), c('Year', 'Illinois', 'Pennsylvania'))
+    setnames(census_subset_transpose, 
+             names(census_subset_transpose), 
+             c('Year', 'Illinois', 'Pennsylvania'))
     
     # Remove old, transposed header row.
     census_subset_transpose = census_subset_transpose[Year != 'Name']
     
     # Melt data into convenient form for line graph.
-    census_subset_transpose = melt(census_subset_transpose, id = 'Year')
+    census_subset_transpose = melt(census_subset_transpose, 
+                                   id = 'Year')
     
     # Change column names for melted 'census_subset_transpose'.
-    setnames(census_subset_transpose, names(census_subset_transpose), c('Year', 'State', 'Population'))
+    setnames(census_subset_transpose, 
+             names(census_subset_transpose), 
+             c('Year', 'State', 'Population'))
     
     # Change 'census_subset_transpose$Population' to 'numeric'.
     census_subset_transpose$Population = as.numeric(census_subset_transpose$Population)
 
 #####  
 # Plot data.
-ggplot(data = census_subset_transpose, aes(x = Year, y = Population, group = State, color = State)) + 
+ggplot(data = census_subset_transpose, 
+       aes(x = Year, 
+           y = Population, 
+           group = State, 
+           color = State)) + 
   geom_line() + 
   geom_point() + 
   ylim(c(10000, 13000)) + 

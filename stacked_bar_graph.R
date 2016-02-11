@@ -15,7 +15,10 @@ library(ggplot2)
 library(reshape2)
 
 # Load data.
-census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
+census_data = data.table(read.csv('census_data.csv', 
+                                  header = T, 
+                                  stringsAsFactors = F, 
+                                  check.names = F))
 
 #####
 # SUBSET/PROCESS DATA.
@@ -38,10 +41,13 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   census_subset$`2010` = census_subset$`2010` / 1000
 
   # Melt 'census_subset' to allow stacked bar graph.
-  census_subset = melt(census_subset, id = 'Name')
+  census_subset = melt(census_subset, 
+                       id = 'Name')
   
   # Rename columns of 'census_data'.
-  setnames(census_subset, names(census_subset), c('State', 'Year', 'Population'))
+  setnames(census_subset, 
+           names(census_subset), 
+           c('State', 'Year', 'Population'))
   
   # Specify y-coordinates for label positions.
     
@@ -57,9 +63,15 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   
 #####
 # Create plot.
-ggplot(data = census_subset, aes(x = Year, y = Population, fill = State, order = State)) +
+ggplot(data = census_subset, 
+       aes(x = Year, 
+           y = Population, 
+           fill = State, 
+           order = State)) +
     geom_bar(stat = 'identity') +
-    geom_text(aes(label = round(census_subset$Population, 1), x = Year,  y = y_coordinate), 
+    geom_text(aes(label = round(census_subset$Population, 1), 
+                  x = Year,  
+                  y = y_coordinate), 
               size = 5, 
               color = 'white') +
     theme(axis.text.x =  element_text(color = 'black', 

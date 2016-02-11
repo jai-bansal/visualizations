@@ -9,7 +9,10 @@ library(data.table)
 library(ggplot2)
 
 # Load data.
-census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
+census_data = data.table(read.csv('census_data.csv', 
+                                  header = T, 
+                                  stringsAsFactors = F, 
+                                  check.names = F))
 
 #####
 # SUBSET/PROCESS DATA.
@@ -32,15 +35,21 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   
 #####  
 # Plot data.
-ggplot(data = census_subset, aes(map_id = census_subset$Name)) + 
-    geom_map(aes(fill = `2010`), map = states_map) + 
-    expand_limits(x = states_map$long, y = states_map$lat) +
+ggplot(data = census_subset, 
+       aes(map_id = census_subset$Name)) + 
+    geom_map(aes(fill = `2010`), 
+             map = states_map) + 
+    expand_limits(x = states_map$long, 
+                  y = states_map$lat) +
     scale_fill_continuous(name = 'Pop. (in thousands)', 
                           low = 'lightblue', 
                           high = 'darkblue') + 
-    borders(database = 'state', inherit.aes = F, colour = 'white') +
+    borders(database = 'state', 
+            inherit.aes = F, 
+            colour = 'white') +
     theme_classic() +
-    theme(panel.background = element_rect(fill = 'white', colour = 'white'),
+    theme(panel.background = element_rect(fill = 'white', 
+                                          colour = 'white'),
           line = element_blank(), 
           axis.ticks.x = element_blank(), 
           axis.ticks.y = element_blank(),

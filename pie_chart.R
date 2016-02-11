@@ -11,7 +11,10 @@ library(ggplot2)
 library(ggthemes)
 
 # Load data.
-census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
+census_data = data.table(read.csv('census_data.csv', 
+                                  header = T, 
+                                  stringsAsFactors = F, 
+                                  check.names = F))
 
 #####
 # SUBSET/PROCESS DATA.
@@ -42,17 +45,21 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
     census_subset$sum = cumsum(census_subset$`2010`)
     
     # Create 'offset_sum' column that will help with chart labels.
-    census_subset$offset_sum = c(0, census_subset$sum[1: (nrow(census_subset) - 1)])
+    census_subset$offset_sum = c(0, census_subset$sum[1:(nrow(census_subset) - 1)])
     
     # Create 'label_locations' column that specifies label locations on pie chart.
     census_subset$label_locations = (census_subset$sum + census_subset$offset_sum) / 2
 
 #####  
 # Plot data.
-ggplot(data = census_subset, aes(x = '', y = `2010`, fill = as.character(round(`2010`, 2)))) + 
+ggplot(data = census_subset, 
+       aes(x = '', 
+           y = `2010`, 
+           fill = as.character(round(`2010`, 2)))) + 
 geom_bar(stat = 'identity', 
          color = 'black') +
-geom_text(aes(y = label_locations, label = census_subset$percent), 
+geom_text(aes(y = label_locations, 
+              label = census_subset$percent), 
           size = 5) +
 coord_polar('y') +
 guides(fill = guide_legend(title = 'Population')) +

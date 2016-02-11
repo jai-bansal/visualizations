@@ -10,7 +10,10 @@ library(ggplot2)
 library(grid)
 
 # Load data.
-census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
+census_data = data.table(read.csv('census_data.csv', 
+                                  header = T, 
+                                  stringsAsFactors = F, 
+                                  check.names = F))
 
 #####
 # SUBSET/PROCESS DATA.
@@ -26,7 +29,8 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   
 #####
 # Plot data.
-ggplot(data = census_subset, aes(x = `2010`)) +
+ggplot(data = census_subset, 
+       aes(x = `2010`)) +
   geom_histogram(binwidth = 1500, 
                  fill = I('darkgreen'), 
                  col = I('black')) +
@@ -44,10 +48,16 @@ ggplot(data = census_subset, aes(x = `2010`)) +
         plot.title = element_text(face = 'bold', 
                                   size = 16), 
         panel.grid.minor = element_blank()) +
-  geom_segment(aes(x = 26000, y = 2, xend = 25000, yend = 1.1), 
+  geom_segment(aes(x = 26000, 
+                   y = 2, 
+                   xend = 25000, 
+                   yend = 1.1), 
                arrow = arrow(length = unit(0.5, 'cm')), 
                size = 1) +
-  geom_segment(aes(x = 35000, y = 2, xend = 36000, yend = 1.1), 
+  geom_segment(aes(x = 35000, 
+                   y = 2, 
+                   xend = 36000, 
+                   yend = 1.1), 
                arrow = arrow(length = unit(0.5, 'cm')), 
                size = 1) +
   annotate('text', 
@@ -58,7 +68,9 @@ ggplot(data = census_subset, aes(x = `2010`)) +
   annotate('text', 
            x = 26000, 
            y = 2.3, 
-           label = paste0('(', round(census_subset[Name == 'Texas']$`2010`, 2), ')'), 
+           label = paste0('(', 
+                          round(census_subset[Name == 'Texas']$`2010`, 2), 
+                          ')'), 
            size = 5) +
   annotate('text', 
            x = 35000, 
@@ -68,7 +80,9 @@ ggplot(data = census_subset, aes(x = `2010`)) +
   annotate('text', 
            x = 35000, 
            y = 2.3, 
-           label = paste0('(', round(census_subset[Name == 'California']$`2010`, 2), ')'), 
+           label = paste0('(', 
+                          round(census_subset[Name == 'California']$`2010`, 2), 
+                          ')'), 
            size = 5) +
   ggtitle('Absolute Frequency of 2010 US State Populations (in thousands)') +
   xlab('2010 Populations (in thousands)') +

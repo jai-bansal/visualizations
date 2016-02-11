@@ -21,13 +21,17 @@ library(data.table)
   area_page = html('https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_area')
   
   # Get xpaths.
-  population_xpath = html_nodes(population_page, xpath = '//*[@id="mw-content-text"]/table[3]')
-  area_xpath = html_nodes(area_page, xpath = '//*[@id="mw-content-text"]/table[1]')
+  population_xpath = html_nodes(population_page, 
+                                xpath = '//*[@id="mw-content-text"]/table[3]')
+  area_xpath = html_nodes(area_page, 
+                          xpath = '//*[@id="mw-content-text"]/table[1]')
   
   # Get data.
   # 'html_table' returns a list containing a data frame, so the data frame is extracted.
-  census_data = html_table(population_xpath, fill = T)[[1]]
-  area_data = html_table(area_xpath, fill = T)[[1]]
+  census_data = html_table(population_xpath, 
+                           fill = T)[[1]]
+  area_data = html_table(area_xpath, 
+                         fill = T)[[1]]
   census_data = data.table(census_data)
   area_data = data.table(area_data)
   
@@ -38,12 +42,24 @@ library(data.table)
   
     # Columns are 'character' vectors and have commas.
     # These must be removed.
-    census_data$`1960` = gsub(',', '', census_data$`1960`)
-    census_data$`1970` = gsub(',', '', census_data$`1970`)
-    census_data$`1980` = gsub(',', '', census_data$`1980`)
-    census_data$`1990` = gsub(',', '', census_data$`1990`)
-    census_data$`2000` = gsub(',', '', census_data$`2000`)
-    census_data$`2010` = gsub(',', '', census_data$`2010`)
+    census_data$`1960` = gsub(',', 
+                              '', 
+                              census_data$`1960`)
+    census_data$`1970` = gsub(',', 
+                              '', 
+                              census_data$`1970`)
+    census_data$`1980` = gsub(',', 
+                              '', 
+                              census_data$`1980`)
+    census_data$`1990` = gsub(',', 
+                              '', 
+                              census_data$`1990`)
+    census_data$`2000` = gsub(',', 
+                              '', 
+                              census_data$`2000`)
+    census_data$`2010` = gsub(',', 
+                              '', 
+                              census_data$`2010`)
     
     # Convert columns to numeric.
     census_data$`1960` = as.numeric(census_data$`1960`)
@@ -60,21 +76,30 @@ library(data.table)
   
       # Remove unneeded columns and rename columns.
       area_data = area_data[, .(V1, V3)]
-      setnames(area_data, names(area_data), c('Name', 'Area (sq. miles)'))
+      setnames(area_data, 
+               names(area_data), 
+               c('Name', 'Area (sq. miles)'))
       
       # Remove old header row
       area_data = area_data[Name != 'State/territory']
       
       # Columns are 'character' vectors and have commas.
       # These must be removed.
-      area_data$`Area (sq. miles)` = gsub(',', '', area_data$`Area (sq. miles)`)
+      area_data$`Area (sq. miles)` = gsub(',', 
+                                          '', 
+                                          area_data$`Area (sq. miles)`)
       
       # Convert columns to numeric.
       area_data$`Area (sq. miles)` = as.numeric(area_data$`Area (sq. miles)`)
   
   # Add 'area_data' to 'census_data'.    
   # The result is still called 'census_data' and so is technically is misnomer.
-  census_data = merge(census_data, area_data, by = 'Name', all.x = T)
+  census_data = merge(census_data, 
+                      area_data, 
+                      by = 'Name', 
+                      all.x = T)
 
 # Write data to '.csv' file.
-write.csv(census_data, 'census_data.csv', row.names = F)
+write.csv(census_data, 
+          'census_data.csv', 
+          row.names = F)

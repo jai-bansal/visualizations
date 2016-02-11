@@ -16,7 +16,10 @@ library(reshape2)
 library(googleVis)
 
 # Load data.
-census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
+census_data = data.table(read.csv('census_data.csv', 
+                                  header = T, 
+                                  stringsAsFactors = F, 
+                                  check.names = F))
 
 #####
 # SUBSET/PROCESS DATA.
@@ -32,18 +35,25 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   census_subset = census_data[(Name %in% far_west) | (Name %in% southwest)]
 
   # Melt 'census_subset' to allow motion chart.
-  census_subset = melt(census_subset, id = 'Name')
+  census_subset = melt(census_subset, 
+                       id = 'Name')
   
   # Add 'Region' column to 'census_subset'.
   census_subset$Region = ifelse(census_subset$Name %in% far_west, 'Far West', 'Southwest')
 
   # Rename columns of 'census_data'.
-  setnames(census_subset, names(census_subset), c('State', 'Year', 'Population', 'Region'))
+  setnames(census_subset, 
+           names(census_subset), 
+           c('State', 'Year', 'Population', 'Region'))
   
   # Change 'census_data$Year' to 'numeric' type.
   census_subset$Year = as.numeric(as.character(census_subset$Year))
   
 #####
 # Create motion chart.
-fig = gvisMotionChart(data = census_subset, idvar = 'State', timevar = 'Year', xvar = 'Region', yvar = 'Population')
+fig = gvisMotionChart(data = census_subset, 
+                      idvar = 'State', 
+                      timevar = 'Year', 
+                      xvar = 'Region', 
+                      yvar = 'Population')
 plot(fig)

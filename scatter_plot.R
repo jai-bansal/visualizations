@@ -11,7 +11,10 @@ library(reshape2)
 library(ggplot2)
 
 # Load data.
-census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactors = F, check.names = F))
+census_data = data.table(read.csv('census_data.csv', 
+                                  header = T, 
+                                  stringsAsFactors = F, 
+                                  check.names = F))
 
 #####
 # SUBSET/PROCESS DATA.
@@ -35,14 +38,21 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
   census_subset$`2010` = census_subset$`2010` / 1000
   
   # Melt 'census_subset' to allow creation of scatter plot.
-  census_subset = melt(census_subset, id = 'Name')
+  census_subset = melt(census_subset, 
+                       id = 'Name')
   
   # Change column names of 'census_subset'.
-  setnames(census_subset, names(census_subset), c('State', 'Year', 'Population'))
+  setnames(census_subset, 
+           names(census_subset), 
+           c('State', 'Year', 'Population'))
 
 #####  
 # Plot data.
-ggplot(data = census_subset, aes(x = Year, y = Population, color = State, shape = State)) +
+ggplot(data = census_subset, 
+       aes(x = Year, 
+           y = Population, 
+           color = State, 
+           shape = State)) +
   geom_point(size = 4) +
   scale_y_continuous(breaks = seq(2500, 20000, by = 2500)) +
   theme(axis.text.x = element_text(color = 'black', 

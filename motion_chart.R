@@ -21,6 +21,9 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
 #####
 # SUBSET/PROCESS DATA.
 
+  # Remove unneeded column.
+  census_data$`Area (sq. miles)` = NULL
+
   # Define regions.
   far_west = c('Washington', 'Oregon', 'California', 'Nevada')
   southwest = c('Arizona', 'New Mexico', 'Texas', 'Oklahoma')

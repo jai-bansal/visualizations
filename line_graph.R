@@ -16,6 +16,9 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
 #####
 # SUBSET/PROCESS DATA.
 
+  # Remove unneeded column.
+  census_data$`Area (sq. miles)` = NULL
+
   # Subset data.
   census_subset = census_data[Name == 'Pennsylvania' | Name == 'Illinois']
   

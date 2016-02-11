@@ -20,6 +20,9 @@ census_data = data.table(read.csv('census_data.csv', header = T, stringsAsFactor
 #####
 # SUBSET/PROCESS DATA.
 
+  # Remove unneeded column.
+  census_data$`Area (sq. miles)` = NULL
+
   # Define 'Great Lakes' region.
   great_lakes = c('Wisconsin', 'Michigan', 'Illinois', 'Indiana', 'Ohio')
   

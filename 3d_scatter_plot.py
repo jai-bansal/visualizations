@@ -30,7 +30,7 @@ census_data['2010'] = census_data['2010'] / 1000
 # Specify states of interest.
 states = ['Maryland', 'Pennsylvania', 'Virginia', 'West Virginia']
 
-# Keep areas in separate data frame and rename columns
+# Keep areas in separate data frame and rename columns.
 areas = census_data[['Name', 'Area (sq. miles)']]
 areas.columns = ['State', 'Area (sq. miles)']
 

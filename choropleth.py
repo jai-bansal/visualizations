@@ -1,4 +1,4 @@
-# This script creates a choropleth map using (a subset of) 'census_data.csv'.
+# This script creates a choropleth map of the contiguous United States using (a subset of) 'census_data.csv'.
 
 # A description of 'census_data.csv' can be found in 'census_data_scrape_and_process.R'.
 # To avoid an overwhelming plot, I will be using a subset of 'census_data.csv' consisting of
@@ -6,12 +6,7 @@
 
 # Import modules.
 import pandas as pd
-from mpl_toolkits.basemap import Basemap
-import matplotlib.pyplot as plt
-from matplotlib import style
-
-# Set style.
-style.use('seaborn-talk')
+import plotly
 
 # Load data.
 census_data = pd.read_csv('census_data.csv',
@@ -28,30 +23,40 @@ census_subset = census_subset[census_subset['Name'] != 'United States']
 # Divide '2010' population value by 1000 for easier graph viewing.
 census_subset['2010'] = census_subset['2010'] / 1000
 
+# Add state abbreviations. This is necessary for plotting.
+census_subset['abbreviations'] = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA',
+                                                'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK',
+                                               'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
+
 # PLOT DATA.
 
-# Create map.
-# Lambert Conformal map of lower 48 states.
-m = Basemap(llcrnrlon=-119,
-            llcrnrlat=22,
-            urcrnrlon=-64,
-            urcrnrlat=49,
-            projection='lcc',
-            lat_1=33,
-            lat_2=45,
-            lon_0=-95)
-# draw state boundaries.
-# data from U.S Census Bureau
-# http://www.census.gov/geo/www/cob/st2000.html
-shp_info = m.readshapefile('st99_d00','states',drawbounds=True)
+# Specify color scale using 'red, green, blue' coordinates.
+color_scale = [[0.0, 'rgb(255, 255, 255)'],
+               [0.2, 'rgb(102, 102, 255)'],
+               [0.4, 'rgb(51, 51, 255)'],
+               [0.6, 'rgb(0, 0, 255)'],
+               [0.8, 'rgb(0, 0, 204)'],
+               [1.0, 'rgb(0, 0, 102)']]
 
-#m.drawstates()
+# Create choropleth.
+choropleth = [dict(
+                            type = 'choropleth',
+                            colorscale = color_scale,
+                            locations = census_subset['abbreviations'],
+                            z = census_subset['2010'].round(1),
+                            locationmode = 'USA-states',
+              colorbar = dict(
+                                  title = 'Population (in thousands)'))]
 
-# Set plot titles.
-plt.title('2010 Contiguous United States Population (in thousands) by State', fontweight = 'bold')
+# Create layout.
+layout = dict(
+                    title = '2010 United States Population (in thousands) by State',
+                    geo = dict(
+                                    scope = 'usa',
+                                    showlakes = False),
+                    font = dict(size = 35))
 
-# Adjust plot margins.
-# plt.subplots_adjust(left = 0.25, bottom = 0.22, right = 0.67, top = 0.95)
-
-# Show plot.
-plt.show()
+# Plot figure.
+# Figure opens in a browser tab.
+plotly.offline.plot(dict(data = choropleth,
+                         layout = layout))

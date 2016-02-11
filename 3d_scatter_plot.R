@@ -6,6 +6,7 @@
 
 # Load packages.
 library(data.table)
+library(reshape2)
 library(scatterplot3d)
 
 # Load data.
@@ -54,6 +55,10 @@ census_data = data.table(read.csv('census_data.csv',
   census_subset = merge(census_subset, 
                         areas, 
                         by = 'State')
+  
+  # Change 'census_subset$Year' to character vector.
+  census_subset$Year = as.character(census_subset$Year)
+  
   # Add 'colors' column.
   # Each state gets a color which will be that state's color in the plot.
   census_subset$colors = ifelse(census_subset$State == 'Maryland', 'blue', 
@@ -76,6 +81,7 @@ census_data = data.table(read.csv('census_data.csv',
     color = census_subset$colors,
     pch = census_subset$shape_number, 
     type = 'h',
+    angle = 290,
     main = 'Selected State Populations and Areas Over Time', 
     xlab = 'Year', 
     ylab = 'Population (hundred thousands)', 

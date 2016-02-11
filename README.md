@@ -4,7 +4,7 @@ For each visualization, there is a creation script and an image of the output
 (except for the R branch motion chart; an image of this would defeat the purpose of the plot but running the script launches a browser
 containing the motion plot).
 Most R [Python] plots are created using ggplot2 [matplotlib].
-The branches contain the same types of plot with a few exceptions.
+The R branch is the only one with a motion chart, but otherwise the branches contain the same plot types.
 Here are the visualizations in each branch listed alphabetically.
 
 R:

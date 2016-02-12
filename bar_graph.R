@@ -44,11 +44,13 @@ ggplot(data = census_subset,
         axis.text.y = element_text(color= 'black', 
                                    size = 14),
         axis.title.x = element_text(face = 'bold', 
-                                    size = 15),
+                                    size = 15, 
+                                    vjust = -0.5),
         axis.title.y = element_text(face = 'bold',
                                     size = 15),
         plot.title = element_text(face = 'bold', 
-                                  size = 16)) +
+                                  size = 16, 
+                                  vjust = 2)) +
   ggtitle('Selected State Populations in 2010 (in thousands)') + 
   xlab('State') + 
   ylab('2010 Population (in thousands)')

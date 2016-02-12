@@ -75,17 +75,20 @@ census_data = data.table(read.csv('census_data.csv',
                   axis.text.y = element_text(color = 'black', 
                                      size = 14), 
                   axis.title.x = element_text(face = 'bold', 
-                                    size = 14), 
+                                    size = 14, 
+                                    vjust = -0.5), 
                   axis.title.y = element_text(face = 'bold', 
-                                    size = 14), 
+                                    size = 14, 
+                                    vjust = 1), 
                   plot.title = element_text(face = 'bold',
-                                  size = 16), 
+                                  size = 16, 
+                                  vjust = 2), 
                   legend.title = element_text(size = 16), 
                   legend.text = element_text(size = 15)) +
                   guides(fill = guide_legend(title = 'State')) +
                   scale_x_discrete(labels = c('1960s', '1970s', '1980s', '1990s', '2000s')) +
             ggtitle('Percentage Growth By Decade For Selected States') +
-            xlab('Decade') +
+            xlab('') +
             ylab('Percentage Growth')
 
   # Create aggregate United States plot.
@@ -104,11 +107,14 @@ census_data = data.table(read.csv('census_data.csv',
                   axis.text.y = element_text(color = 'black', 
                                      size = 14), 
                   axis.title.x = element_text(face = 'bold', 
-                                    size = 14), 
+                                    size = 14, 
+                                    vjust = -0.5), 
                   axis.title.y = element_text(face = 'bold', 
-                                    size = 14), 
+                                    size = 14, 
+                                    vjust = 1), 
                   plot.title = element_text(face = 'bold',
-                                  size = 16), 
+                                  size = 16, 
+                                  vjust = 2), 
                   legend.title = element_text(size = 16), 
                   legend.text = element_text(size = 15)) +
                   scale_x_discrete(labels = c('1960s', '1970s', '1980s', '1990s', '2000s')) +

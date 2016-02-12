@@ -56,20 +56,20 @@ ggplot(data = census_subset,
   geom_point(size = 4) +
   scale_y_continuous(breaks = seq(2500, 20000, by = 2500)) +
   theme(axis.text.x = element_text(color = 'black', 
-                                   size = 14), 
+                                   size = 15), 
         axis.text.y = element_text(color = 'black', 
-                                   size = 14), 
+                                   size = 15), 
         axis.title.x = element_text(face = 'bold', 
-                                    size = 14, 
+                                    size = 15, 
                                     vjust = -0.25), 
         axis.title.y = element_text(face = 'bold', 
-                                    size = 14, 
+                                    size = 15, 
                                     vjust = 1), 
         plot.title = element_text(face = 'bold',
-                                  size = 16, 
+                                  size = 17, 
                                   vjust = 1.5), 
-        legend.title = element_text(size = 15), 
-        legend.text = element_text(size = 14)) +
+        legend.title = element_text(size = 16), 
+        legend.text = element_text(size = 15)) +
   ggtitle('Selected State Populations (in thousands) Over Time') +
   xlab('Year') +
   ylab('Population (in thousands)')

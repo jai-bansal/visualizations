@@ -3,6 +3,7 @@ This project creates various visualizations in R and Python, contained in the R 
 For each visualization, there is a creation script and an image of the output
 (except for the R branch motion chart; an image of this would defeat the purpose of the plot but running the script launches a browser
 containing the motion plot).
+There is an image for the 3D scatter plot in the Python branch, but running the script is preferable as it generates a figure which can be rotated and adjusted in real time.
 Most R [Python] plots are created using ggplot2 [matplotlib].
 The R branch is the only one with a motion chart, but otherwise the branches contain the same plot types.
 Here are the visualizations in each branch listed alphabetically.

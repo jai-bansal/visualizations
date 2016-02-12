@@ -86,6 +86,6 @@ ggplot(data = census_subset,
                           round(census_subset[Name == 'California']$`2010`, 2), 
                           ')'), 
            size = 5) +
-  ggtitle('Absolute Frequency of 2010 US State Populations (in thousands)') +
+  ggtitle('Histogram of 2010 US State Populations (in thousands)') +
   xlab('2010 Populations (in thousands)') +
-  ylab('Absolute Frequency')
+  ylab('Number of States')

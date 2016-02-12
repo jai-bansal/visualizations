@@ -61,8 +61,9 @@ geom_bar(stat = 'identity',
 geom_text(aes(y = label_locations, 
               label = census_subset$percent), 
           size = 5) +
-coord_polar('y') +
-guides(fill = guide_legend(title = 'Population')) +
+coord_polar('y', 
+            start = 80) +
+guides(fill = guide_legend(title = 'Population\n(thousands)')) +
 theme_few() +
 theme(axis.ticks = element_blank(), 
       axis.text.x = element_text(color = 'black', 

@@ -97,6 +97,9 @@ ax1.tick_params(axis = 'both',
 ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)
 ax1.xaxis.get_major_ticks()[-1].label1.set_visible(False)
 
+# Adjust plot title spacing.
+ax1.title.set_position([0.5, 1.02])
+
 # Set plot and axes titles.
 plt.title('Population (in thousands) Over Time for 2 States',
           fontweight = 'bold')

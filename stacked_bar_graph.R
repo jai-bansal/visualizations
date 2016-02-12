@@ -72,23 +72,23 @@ ggplot(data = census_subset,
     geom_text(aes(label = round(census_subset$Population, 1), 
                   x = Year,  
                   y = y_coordinate), 
-              size = 5, 
+              size = 5.5, 
               color = 'white') +
     theme(axis.text.x =  element_text(color = 'black', 
-                                      size = 14), 
+                                      size = 15), 
           axis.text.y = element_text(color = 'black', 
-                                     size = 14), 
+                                     size = 15), 
           axis.title.x = element_text(face = 'bold', 
-                                    size = 14, 
+                                    size = 15, 
                                     vjust = -0.25), 
          axis.title.y = element_text(face = 'bold', 
-                                    size = 14, 
+                                    size = 15, 
                                     vjust = 1), 
          plot.title = element_text(face = 'bold',
-                                  size = 16, 
+                                  size = 17, 
                                   vjust = 2), 
-         legend.title = element_text(size = 16), 
-         legend.text = element_text(size = 15)) +
+         legend.title = element_text(size = 17), 
+         legend.text = element_text(size = 16)) +
     ggtitle('Great Lakes Region Population (in thousands) by Year and State') +
     xlab('Year') +
     ylab('Population (in thousands)')

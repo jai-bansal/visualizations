@@ -87,18 +87,15 @@ ax1.annotate(round(census_subset[(census_subset['State'] == 'Pennsylvania') & (c
 plt.ylim([9900, 13100])
 plt.xlim([1955, 2015])
 
-# Set x-axis and y-axis label text to black and change font size.
+# For first subplot x-axis and y-axis: remove ticks, change tick labels to black and pick size.
 ax1.tick_params(axis = 'both',
+                length = 0,
                 colors = 'black',
                 labelsize = 12)
 
 # Remove first and last x-axis label (not needed).
 ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)
 ax1.xaxis.get_major_ticks()[-1].label1.set_visible(False)
-
-# Remove ticks from both axes.
-ax1.tick_params(axis = 'both',
-                length = 0)
 
 # Set plot and axes titles.
 plt.title('Population (in thousands) Over Time for 2 States',

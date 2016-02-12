@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib import style
 
 # Set style.
-style.use('dark_background')
+style.use('ggplot')
 
 # Load data.
 census_data = pd.read_csv('census_data.csv',
@@ -59,9 +59,11 @@ ax1.annotate('(' + str(round(census_subset[census_subset['Name'] == 'California'
              fontsize = 13,
              arrowprops = dict(arrowstyle = '->'))
 
-# Remove ticks from both axes.
+# For x-axis and y-axis: remove ticks, change tick labels to black and pick size.
 ax1.tick_params(axis = 'both',
-                length = 0)
+                length = 0,
+                colors = 'black',
+                labelsize = 12)
 
 # Set plot and axes titles.
 plt.title('Frequency of 2010 US State Populations (in thousands)',
@@ -69,11 +71,11 @@ plt.title('Frequency of 2010 US State Populations (in thousands)',
 plt.xlabel('2010 Populations (in thousands)',
            fontweight = 'bold',
            fontsize = 12.5,
-           color = 'white')
+           color = 'black')
 plt.ylabel('Frequency',
            fontweight = 'bold',
            fontsize = 12.5,
-           color = 'white')
+           color = 'black')
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.08,

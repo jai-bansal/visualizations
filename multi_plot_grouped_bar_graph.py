@@ -89,10 +89,6 @@ plt.xticks([0.45, 1.45, 2.45, 3.45, 4.45, 5.45],
            ['1960s', '1970s', '1980s', '1990s', '2000s'],
            horizontalalignment = 'center')
 
-# Remove ticks from both axes in first subplot.
-ax1.tick_params(axis = 'both',
-                length = 0)
-
 # Set x-axis and y-axis limits for first subplot.
 plt.ylim([0, 25])
 
@@ -104,8 +100,9 @@ plt.ylabel('Percentage Growth',
            fontsize = 12.5,
            color = 'black')
 
-# Set x-axis and y-axis label text to black and change font size for first subplot.
+# For first subplot x-axis and y-axis: remove ticks, change tick labels to black and pick size.
 ax1.tick_params(axis = 'both',
+                length = 0,
                 colors = 'black',
                 labelsize = 12)
 
@@ -124,8 +121,9 @@ ax2.bar([0.3, 1.3, 2.3, 3.3, 4.3],
         edgecolor = 'black',
         label = 'United States')
 
-# Set x-axis and y-axis label text to black and change font size.
+# For second subplot x-axis and y-axis: remove ticks, change tick labels to black and pick size.
 ax2.tick_params(axis = 'both',
+                length = 0, 
                 colors = 'black',
                 labelsize = 12)
 
@@ -133,10 +131,6 @@ ax2.tick_params(axis = 'both',
 plt.xticks([0.45, 1.45, 2.45, 3.45, 4.45],
            ['1960s', '1970s', '1980s', '1990s', '2000s'],
            horizontalalignment = 'center')
-
-# Remove ticks from both axes for second subplot.
-ax2.tick_params(axis = 'both',
-                length = 0)
 
 # Set y-axis limits for first subplot.
 plt.ylim([0, 25])

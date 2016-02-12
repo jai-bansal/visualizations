@@ -76,10 +76,6 @@ plt.scatter(census_subset['Year'].unique().tolist(),
             marker = 'x',
             color = '#cc00ff')
 
-# Remove ticks from both axes.
-ax1.tick_params(axis = 'both',
-                length = 0)
-
 # Set x-axis and y-axis limits.
 plt.xlim([1955, 2005])
 plt.ylim([0, 22000])
@@ -88,8 +84,9 @@ plt.ylim([0, 22000])
 ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)
 ax1.xaxis.get_major_ticks()[-1].label1.set_visible(False)
 
-# Set x-axis and y-axis label text to black.
+# For first subplot x-axis and y-axis: remove ticks and change tick labels to black.
 ax1.tick_params(axis = 'both',
+                length = 0,
                 colors = 'black')
 
 # Set plot and axes titles.

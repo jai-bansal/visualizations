@@ -20,12 +20,12 @@ census_data = pd.read_csv('census_data.csv',
 # SUBSET/PROCESS DATA.
 
 # Divide population values by 1000 for easier graph viewing.
-census_data['1960'] = census_data['1960'] / 1000
-census_data['1970'] = census_data['1970'] / 1000
-census_data['1980'] = census_data['1980'] / 1000
-census_data['1990'] = census_data['1990'] / 1000
-census_data['2000'] = census_data['2000'] / 1000
-census_data['2010'] = census_data['2010'] / 1000
+census_data['1960'] = census_data['1960'] / 100000
+census_data['1970'] = census_data['1970'] / 100000
+census_data['1980'] = census_data['1980'] / 100000
+census_data['1990'] = census_data['1990'] / 100000
+census_data['2000'] = census_data['2000'] / 100000
+census_data['2010'] = census_data['2010'] / 100000
 
 # Specify states of interest.
 states = ['Maryland', 'Pennsylvania', 'Virginia', 'West Virginia']
@@ -33,6 +33,9 @@ states = ['Maryland', 'Pennsylvania', 'Virginia', 'West Virginia']
 # Keep areas in separate data frame and rename columns.
 areas = census_data[['Name', 'Area (sq. miles)']]
 areas.columns = ['State', 'Area (sq. miles)']
+
+# Divide state areas by 1000 for easier graph viewing.
+areas['Area (sq. miles)'] = areas['Area (sq. miles)'] / 1000
 
 # Create data subset.
 census_subset = census_data[census_data['Name'].isin(states)][['Name', '1960', '1970', '1980', '1990', '2000', '2010']]
@@ -90,10 +93,10 @@ plt.title('Selected State Populations and Areas Over Time')
 plt.xlabel('Year',
            fontsize = 12.5,
            color = 'black')
-plt.ylabel('Population (in thousands)',
+plt.ylabel('Pop. (hundred thousands)',
            fontsize = 12.5,
            color = 'black')
-ax1.set_zlabel('Area (square miles)',
+ax1.set_zlabel('Area (thousands of sq. miles)',
                fontsize = 12.5,
                color = 'black')
 

@@ -48,19 +48,23 @@ ax1.pie(sizes,
 # Remove weird default pie chart tilt.
 plt.axis('equal')
 
+# Adjust plot title spacing.
+ax1.title.set_position([0.5, 0.9])
+
 # Set plot titles.
 plt.title('Selected State 2010 Population (in thousands) and Percentage',
           fontweight = 'bold')
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.25,
-                    bottom = 0.22,
+                    bottom = 0.0,
                     right = 0.67,
                     top = 0.95)
 
 # Add legend.
-plt.legend(labels = census_subset['2010'].round(1),
-           bbox_to_anchor = (1.6, 0.675))
+plt.legend(title = 'Population (in thousands)',
+           labels = census_subset['2010'].round(1),
+           bbox_to_anchor = (1.8, 0.6721))
 
 # Show plot.
 plt.show()

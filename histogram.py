@@ -65,6 +65,15 @@ ax1.tick_params(axis = 'both',
                 colors = 'black',
                 labelsize = 12)
 
+# Remove last x-axis label (not needed).
+ax1.xaxis.get_major_ticks()[-1].label1.set_visible(False)
+
+# Adjust plot title spacing.
+ax1.title.set_position([0.5, 1.02])
+
+# Adjust x-axis title spacing.
+ax1.xaxis.labelpad = 12
+
 # Set plot and axes titles.
 plt.title('Frequency of 2010 US State Populations (in thousands)',
           fontweight = 'bold')
@@ -79,9 +88,9 @@ plt.ylabel('Frequency',
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.08,
-                    bottom = 0.09,
+                    bottom = 0.11,
                     right = 0.95,
-                    top = 0.93)
+                    top = 0.91)
 
 # Show plot.
 plt.show()

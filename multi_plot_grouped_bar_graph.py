@@ -92,6 +92,9 @@ plt.xticks([0.45, 1.45, 2.45, 3.45, 4.45, 5.45],
 # Set x-axis and y-axis limits for first subplot.
 plt.ylim([0, 25])
 
+# Adjust first subplot title spacing.
+ax1.title.set_position([0.5, 1.05])
+
 # Set title, x-axis, and y-axis labels for first subplot.
 plt.title('Percentage Growth By Decade For Selected States',
           fontweight = 'bold')
@@ -135,6 +138,9 @@ plt.xticks([0.45, 1.45, 2.45, 3.45, 4.45],
 # Set y-axis limits for first subplot.
 plt.ylim([0, 25])
 
+# Adjust second subplot title spacing.
+ax1.title.set_position([0.5, 1.03])
+
 # Set title, x-axis, and y-axis labels for first subplot.
 plt.title('Percentage Growth By Decade For United States',
           fontweight = 'bold')
@@ -154,8 +160,8 @@ plt.legend()
 plt.subplots_adjust(left = 0.09,
                     bottom = 0.09,
                     right = 0.99,
-                    top = 0.94,
-                    hspace = 0.3)
+                    top = 0.91,
+                    hspace = 0.38)
 
 # Show plot.
 plt.show()

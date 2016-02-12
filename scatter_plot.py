@@ -78,7 +78,7 @@ plt.scatter(census_subset['Year'].unique().tolist(),
 
 # Set x-axis and y-axis limits.
 plt.xlim([1955, 2005])
-plt.ylim([0, 22000])
+plt.ylim([0, 20000])
 
 # Remove first and last x-axis label (not needed).
 ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)
@@ -88,6 +88,12 @@ ax1.xaxis.get_major_ticks()[-1].label1.set_visible(False)
 ax1.tick_params(axis = 'both',
                 length = 0,
                 colors = 'black')
+
+# Adjust plot title spacing.
+ax1.title.set_position([0.5, 1.04])
+
+# Adjust x-axis title spacing.
+ax1.xaxis.labelpad = 9
 
 # Set plot and axes titles.
 plt.title('Selected State Populations (in thousands) Over Time',

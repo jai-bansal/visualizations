@@ -65,6 +65,12 @@ for i in range(0, len(census_subset['Name'])):
 ax1.tick_params(axis = 'both',
                 length = 0)
 
+# Adjust plot title spacing.
+ax1.title.set_position([0.5, 1.035])
+
+# Adjust x-axis title spacing.
+ax1.xaxis.labelpad = 10
+
 # Fix x-axis labels.
 plt.xticks(np.arange(0,
                      (shift * len(census_subset['2010'])),
@@ -87,9 +93,9 @@ ax1.grid(zorder = 0)
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.12,
-                    bottom = 0.09,
+                    bottom = 0.11,
                     right = 0.98,
-                    top = 0.94)
+                    top = 0.9)
 
 # Show plot.      
 plt.show()

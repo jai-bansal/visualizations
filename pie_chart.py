@@ -41,9 +41,25 @@ labels = census_subset['Name']
 sizes = census_subset['2010']
 
 # Add pie chart data.
-ax1.pie(sizes,
+one, two, three = ax1.pie(sizes,
         labels = labels,
         autopct = '%1.1f%%')
+
+# Set state label font size.
+two[0].set_fontsize(16)
+two[1].set_fontsize(16)
+two[2].set_fontsize(16)
+two[3].set_fontsize(16)
+two[4].set_fontsize(16)
+two[5].set_fontsize(16)
+
+# Set percentage label font size.
+three[0].set_fontsize(16)
+three[1].set_fontsize(16)
+three[2].set_fontsize(16)
+three[3].set_fontsize(16)
+three[4].set_fontsize(16)
+three[5].set_fontsize(16)
 
 # Remove weird default pie chart tilt.
 plt.axis('equal')
@@ -53,7 +69,8 @@ ax1.title.set_position([0.5, 0.9])
 
 # Set plot titles.
 plt.title('Selected State 2010 Population (in thousands) and Percentage',
-          fontweight = 'bold')
+          fontweight = 'bold',
+          fontsize = 18)
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.25,
@@ -62,9 +79,11 @@ plt.subplots_adjust(left = 0.25,
                     top = 0.95)
 
 # Add legend.
-plt.legend(title = 'Population (in thousands)',
+legend = plt.legend(title = 'Population\n(in thousands)',
            labels = census_subset['2010'].round(1),
-           bbox_to_anchor = (1.8, 0.6721))
+           fontsize = 14,
+           bbox_to_anchor = (1.75, 0.7285))
+plt.setp(legend.get_title(), fontsize = 16)
 
 # Show plot.
 plt.show()

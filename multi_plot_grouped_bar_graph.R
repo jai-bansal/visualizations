@@ -84,7 +84,9 @@ census_data = data.table(read.csv('census_data.csv',
                                   size = 16, 
                                   vjust = 2), 
                   legend.title = element_text(size = 16), 
-                  legend.text = element_text(size = 15)) +
+                  legend.text = element_text(size = 15), 
+                  legend.title.align = 0.5, 
+                  legend.text.align = 0) +
                   guides(fill = guide_legend(title = 'State')) +
                   scale_x_discrete(labels = c('1960s', '1970s', '1980s', '1990s', '2000s')) +
             ggtitle('Percentage Growth By Decade For Selected States') +
@@ -116,7 +118,9 @@ census_data = data.table(read.csv('census_data.csv',
                                   size = 16, 
                                   vjust = 2), 
                   legend.title = element_text(size = 16), 
-                  legend.text = element_text(size = 15)) +
+                  legend.text = element_text(size = 15), 
+                  legend.title.align = 0.5,
+                  legend.text.align = 0) +
                   scale_x_discrete(labels = c('1960s', '1970s', '1980s', '1990s', '2000s')) +
                   guides(fill = guide_legend(title = 'Country')) +
             ggtitle('Percentage Growth by Decade for United States') +

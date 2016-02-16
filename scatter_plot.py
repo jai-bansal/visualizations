@@ -49,36 +49,45 @@ plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'North Carolina']['Population'],
             label = 'North Carolina',
             marker = 'o',
-            color = '#ff5050')
+            color = '#ff5050',
+            s = 40)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'Maryland']['Population'],
             label = 'Maryland',
             marker = 'v',
-            color = '#ffcc00')
+            color = '#ffcc00',
+            s = 40)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'New Jersey']['Population'],
             label = 'New Jersey',
             marker = 's',
-            color = '#009933')
+            color = '#009933',
+            s = 40)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'Pennsylvania']['Population'],
             label = 'Pennsylvania',
             marker = '*',
-            color = '#614126')
+            color = '#614126',
+            s = 40)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'Virginia']['Population'],
             label = 'Virginia',
             marker = '+',
-            color = '#000099')
+            color = '#000099',
+            s = 40)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'New York']['Population'],
             label = 'New York',
             marker = 'x',
-            color = '#cc00ff')
+            color = '#cc00ff',
+            s = 40)
 
 # Set x-axis and y-axis limits.
-plt.xlim([1955, 2005])
+plt.xlim([1958, 2002])
 plt.ylim([0, 20000])
+
+# Change x-axis and y-axis tick label size.
+ax1.tick_params(axis = 'both', labelsize = 13)
 
 # Remove first and last x-axis label (not needed).
 ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)
@@ -108,14 +117,17 @@ plt.ylabel('Population (in thousands)',
            color = 'black')
 
 # Adjust plot margins.
-plt.subplots_adjust(left = 0.11,
-                    bottom = 0.09,
-                    right = 0.76,
-                    top = 0.93)
+plt.subplots_adjust(left = 0.14,
+                    bottom = 0.11,
+                    right = 0.75,
+                    top = 0.92)
 
 # Add legend.
-plt.legend(bbox_to_anchor = (1.375, 0.625),
-           scatterpoints = 1)
+legend = plt.legend(title = 'State',
+                    bbox_to_anchor = (1.4, 0.675),
+                    scatterpoints = 1,
+                    fontsize = 12)
+plt.setp(legend.get_title(), fontsize = 13)
 
 # Show plot.
 plt.show()

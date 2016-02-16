@@ -38,16 +38,16 @@ ggplot(data = census_subset,
   scale_y_continuous(breaks = seq(0, 14, by = 1)) + 
   scale_x_discrete(breaks = seq(0, 40000, by = 5000)) +
   theme(axis.text.x = element_text(color = 'black', 
-                                   size = 14), 
+                                   size = 15), 
         axis.text.y = element_text(color = 'black', 
-                                   size = 14),
+                                   size = 15),
         axis.title.x = element_text(face = 'bold', 
-                                    size = 15, 
+                                    size = 16, 
                                     vjust = -0.5),
         axis.title.y = element_text(face = 'bold',
-                                    size = 15),
+                                    size = 16),
         plot.title = element_text(face = 'bold', 
-                                  size = 16, 
+                                  size = 17, 
                                   vjust = 2), 
         panel.grid.minor = element_blank()) +
   geom_segment(aes(x = 26000, 
@@ -66,26 +66,26 @@ ggplot(data = census_subset,
            x = 26000, 
            y = 2.8,
            label = census_subset[`2010` > 20000 & `2010` < 30000]$Name,
-           size = 5) +
+           size = 6) +
   annotate('text', 
            x = 26000, 
            y = 2.3, 
            label = paste0('(', 
                           round(census_subset[Name == 'Texas']$`2010`, 2), 
                           ')'), 
-           size = 5) +
+           size = 6) +
   annotate('text', 
            x = 35000, 
            y = 2.8, 
            label = census_subset[`2010` > 30000]$Name, 
-           size = 5) +
+           size = 6) +
   annotate('text', 
            x = 35000, 
            y = 2.3, 
            label = paste0('(', 
                           round(census_subset[Name == 'California']$`2010`, 2), 
                           ')'), 
-           size = 5) +
+           size = 6) +
   ggtitle('Histogram of 2010 US State Populations (in thousands)') +
   xlab('2010 Populations (in thousands)') +
   ylab('Number of States')

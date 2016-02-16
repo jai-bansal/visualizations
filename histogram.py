@@ -8,10 +8,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib import style
-
-# Set style.
-style.use('ggplot')
 
 # Load data.
 census_data = pd.read_csv('census_data.csv',
@@ -37,27 +33,33 @@ ax1 = fig.add_subplot(1, 1, 1)
 # Add data.
 ax1.hist(census_subset['2010'],
          bins = 19,
-         color = 'darkgreen')
+         color = 'darkgreen',
+         zorder = 3)
 
 # Add annotations for Texas and California.
 ax1.annotate('Texas',
              xy = ((census_subset[census_subset['Name'] == 'Texas']['2010']), 1),
              xytext = ((census_subset[census_subset['Name'] == 'Texas']['2010'] - 4000), 3.75),
-             fontsize = 13)
+             fontsize = 13,
+             zorder = 3)
 ax1.annotate('(' + str(round(census_subset[census_subset['Name'] == 'Texas']['2010'].values[0], 1)) + ')',
              xy = ((census_subset[census_subset['Name'] == 'Texas']['2010'] - 400), 1),
              xytext = ((census_subset[census_subset['Name'] == 'Texas']['2010'] - 4000), 3),
              fontsize = 13,
+             zorder = 3,
              arrowprops = dict(arrowstyle = '->'))
 ax1.annotate('California',
              xy = ((census_subset[census_subset['Name'] == 'California']['2010']), 1),
-             xytext = ((census_subset[census_subset['Name'] == 'California']['2010']- 5000), 3.75),
+             xytext = ((census_subset[census_subset['Name'] == 'California']['2010'] - 5000), 3.75),
+             zorder = 3,
              fontsize = 13)
 ax1.annotate('(' + str(round(census_subset[census_subset['Name'] == 'California']['2010'].values[0], 1)) + ')',
              xy = ((census_subset[census_subset['Name'] == 'California']['2010'] - 900), 1),
              xytext = ((census_subset[census_subset['Name'] == 'California']['2010'] - 5000), 3),
              fontsize = 13,
-             arrowprops = dict(arrowstyle = '->'))
+             zorder = 3,
+             arrowprops = dict(facecolor = 'black',
+                               arrowstyle = '->'))
 
 # For x-axis and y-axis: remove ticks, change tick labels to black and pick size.
 ax1.tick_params(axis = 'both',
@@ -73,6 +75,9 @@ ax1.title.set_position([0.5, 1.02])
 
 # Adjust x-axis title spacing.
 ax1.xaxis.labelpad = 12
+
+# Add grid.
+ax1.grid(zorder = 0)
 
 # Set plot and axes titles.
 plt.title('Frequency of 2010 US State Populations (in thousands)',

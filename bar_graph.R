@@ -38,11 +38,12 @@ ggplot(data = census_subset,
   theme(legend.position = 'none') + 
   scale_y_continuous(breaks = seq(0, 12500, 2500)) +
   geom_text(aes(label = round(`2010`, 1)), 
-            vjust = 2) +
+            vjust = 1.5, 
+            size = 5.5) +
   theme(axis.text.x = element_text(color = 'black', 
-                                   size = 14), 
+                                   size = 14.5), 
         axis.text.y = element_text(color= 'black', 
-                                   size = 14),
+                                   size = 14.5),
         axis.title.x = element_text(face = 'bold', 
                                     size = 15, 
                                     vjust = -0.5),

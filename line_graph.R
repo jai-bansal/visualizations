@@ -71,39 +71,39 @@ ggplot(data = census_subset_transpose,
   ylim(c(10000, 13000)) + 
   theme_economist() +
   theme(axis.text.x = element_text(color = 'black', 
-                                   size = 14), 
+                                   size = 15), 
         axis.text.y = element_text(color = 'black', 
-                                   size = 14), 
+                                   size = 15), 
         axis.title.x = element_text(face = 'bold', 
-                                    size = 15),
+                                    size = 16),
         axis.title.y = element_text(face = 'bold',
-                                    size = 15, 
+                                    size = 16, 
                                     vjust = 1),
         plot.title = element_text(face = 'bold', 
-                                  size = 16, 
+                                  size = 17, 
                                   hjust = 0.35), 
-        legend.title = element_text(size = 15),
-        legend.text = element_text(size = 14)) +
+        legend.title = element_text(size = 16),
+        legend.text = element_text(size = 15)) +
   annotate('text', 
            x = 1, 
            y = 10000, 
            label = census_subset_transpose[State == 'Illinois' & Year == '1960']$Population, 
-           size = 5) +
+           size = 5.5) +
   annotate('text',
            x = 1, 
            y = 11250, 
            label = census_subset_transpose[State == 'Pennsylvania' & Year == '1960']$Population, 
-           size = 5) + 
+           size = 5.5) + 
   annotate('text', 
            x = 6.2, 
            y = 12600, 
            label = census_subset_transpose[State == 'Pennsylvania' & Year == '2010']$Population, 
-           size = 5) +
+           size = 5.5) +
   annotate('text', 
            x = 6, 
            y = 12950, 
            label = census_subset_transpose[State == 'Illinois' & Year == '2010']$Population, 
-           size = 5) +
+           size = 5.5) +
   ggtitle('Population (in thousands) Over Time for Selected States') +
   xlab('Year') +
   ylab('Population (in thousands)')

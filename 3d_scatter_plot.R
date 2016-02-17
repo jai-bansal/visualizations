@@ -24,13 +24,13 @@ census_data = data.table(read.csv('census_data.csv',
   # Subset data.
   census_subset = census_data[Name %in% states]
 
-  # Divide population values by 1000 for easier graph viewing.
-  census_subset$`1960` = census_subset$`1960` / 100000
-  census_subset$`1970` = census_subset$`1970` / 100000
-  census_subset$`1980` = census_subset$`1980` / 100000
-  census_subset$`1990` = census_subset$`1990` / 100000
-  census_subset$`2000` = census_subset$`2000` / 100000
-  census_subset$`2010` = census_subset$`2010` / 100000
+  # Divide population values by 1000000 for easier graph viewing.
+  census_subset$`1960` = census_subset$`1960` / 1000000
+  census_subset$`1970` = census_subset$`1970` / 1000000
+  census_subset$`1980` = census_subset$`1980` / 1000000
+  census_subset$`1990` = census_subset$`1990` / 1000000
+  census_subset$`2000` = census_subset$`2000` / 1000000
+  census_subset$`2010` = census_subset$`2010` / 1000000
   
   # Divide area values by 1000 for easier graph viewing.
   census_subset$`Area (sq. miles)` = census_subset$`Area (sq. miles)` / 1000
@@ -84,7 +84,7 @@ census_data = data.table(read.csv('census_data.csv',
     angle = 290,
     main = 'Selected State Populations and Areas Over Time', 
     xlab = 'Year', 
-    ylab = 'Population (hundred thousands)', 
+    ylab = 'Population (in millions)', 
     zlab = 'Area (thousands of sq. miles)')
   
   # Add legend.

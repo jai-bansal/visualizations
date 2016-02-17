@@ -39,18 +39,18 @@ ggplot(data = census_subset,
   scale_y_continuous(breaks = seq(0, 12500, 2500)) +
   geom_text(aes(label = round(`2010`, 1)), 
             vjust = 1.5, 
-            size = 5.5) +
+            size = 6) +
   theme(axis.text.x = element_text(color = 'black', 
-                                   size = 14.5), 
+                                   size = 15), 
         axis.text.y = element_text(color= 'black', 
-                                   size = 14.5),
+                                   size = 15),
         axis.title.x = element_text(face = 'bold', 
-                                    size = 15, 
+                                    size = 16, 
                                     vjust = -0.5),
         axis.title.y = element_text(face = 'bold',
-                                    size = 15),
+                                    size = 16),
         plot.title = element_text(face = 'bold', 
-                                  size = 16, 
+                                  size = 17, 
                                   vjust = 2)) +
   ggtitle('Selected State Populations in 2010 (in thousands)') + 
   xlab('State') + 

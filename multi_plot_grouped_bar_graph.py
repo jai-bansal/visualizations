@@ -97,20 +97,22 @@ ax1.title.set_position([0.5, 1.05])
 
 # Set title, x-axis, and y-axis labels for first subplot.
 plt.title('Percentage Growth By Decade For Selected States',
-          fontweight = 'bold')
+          fontweight = 'bold',
+          fontsize = 14)
 plt.ylabel('Percentage Growth',
            fontweight = 'bold',
-           fontsize = 12.5,
+           fontsize = 13.5,
            color = 'black')
 
 # For first subplot x-axis and y-axis: remove ticks, change tick labels to black and pick size.
 ax1.tick_params(axis = 'both',
                 length = 0,
                 colors = 'black',
-                labelsize = 12)
+                labelsize = 13.5)
 
 # Show legend for first subplot.
 plt.legend(loc = 'upper center',
+           fontsize = 14,
            ncol = 3)
 
 # Create second subplot.
@@ -129,7 +131,7 @@ ax2.bar([0.3, 1.3, 2.3, 3.3, 4.3],
 ax2.tick_params(axis = 'both',
                 length = 0, 
                 colors = 'black',
-                labelsize = 12)
+                labelsize = 13.5)
 
 # Fix x-axis labels for second subplot.
 plt.xticks([0.45, 1.45, 2.45, 3.45, 4.45],
@@ -144,18 +146,20 @@ ax1.title.set_position([0.5, 1.03])
 
 # Set title, x-axis, and y-axis labels for first subplot.
 plt.title('Percentage Growth By Decade For United States',
-          fontweight = 'bold')
+          fontweight = 'bold',
+          fontsize = 14)
 plt.xlabel('Decade',
            fontweight = 'bold',
-           fontsize = 12.5,
+           fontsize = 13.5,
            color = 'black')
 plt.ylabel('Percentage Growth',
            fontweight = 'bold',
-           fontsize = 12.5,
+           fontsize = 13.5,
            color = 'black')
 
 # Add legend.
-plt.legend(loc = 'upper center')
+plt.legend(loc = 'upper center',
+           fontsize = 14)
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.09,

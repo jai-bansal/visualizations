@@ -69,19 +69,19 @@ ax1.scatter(census_subset['Year'].unique().tolist(),
 ax1.annotate(round(census_subset[(census_subset['State'] == 'Illinois') & (census_subset['Year'] == '1960')]['Population'].values[0], 2),
              xy = (1957, 9950),
              xytext = (1957, 9950),
-             fontsize = 11)
+             fontsize = 12)
 ax1.annotate(round(census_subset[(census_subset['State'] == 'Pennsylvania') & (census_subset['Year'] == '1960')]['Population'].values[0], 2),
              xy = (1957, 11150),
              xytext = (1957, 11200),
-             fontsize = 11)
+             fontsize = 12)
 ax1.annotate(round(census_subset[(census_subset['State'] == 'Illinois') & (census_subset['Year'] == '2010')]['Population'].values[0], 2),
              xy = (2006, 12900),
              xytext = (2006, 12875),
-             fontsize = 11)
+             fontsize = 12)
 ax1.annotate(round(census_subset[(census_subset['State'] == 'Pennsylvania') & (census_subset['Year'] == '2010')]['Population'].values[0], 2),
              xy = (2007, 12500),
              xytext = (2007, 12500),
-             fontsize = 11)
+             fontsize = 12)
 
 # Set x-axis and y-axis limits.
 plt.ylim([9900, 13100])
@@ -113,7 +113,9 @@ plt.ylabel('Population (in thousands)',
            color = 'black')
 
 # Add legend.
-ax1.legend(loc = 2)
+legend = ax1.legend(title = 'State',
+           loc = 'center right')
+plt.setp(legend.get_title(), fontsize = 13)
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.13,

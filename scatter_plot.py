@@ -19,13 +19,13 @@ census_data = pd.read_csv('census_data.csv',
 
 # SUBSET/PROCESS DATA.
 
-# Divide population values by 1000 for easier graph viewing.
-census_data['1960'] = census_data['1960'] / 1000
-census_data['1970'] = census_data['1970'] / 1000
-census_data['1980'] = census_data['1980'] / 1000
-census_data['1990'] = census_data['1990'] / 1000
-census_data['2000'] = census_data['2000'] / 1000
-census_data['2010'] = census_data['2010'] / 1000
+# Divide population values by 1000000 for easier graph viewing.
+census_data['1960'] = census_data['1960'] / 1000000
+census_data['1970'] = census_data['1970'] / 1000000
+census_data['1980'] = census_data['1980'] / 1000000
+census_data['1990'] = census_data['1990'] / 1000000
+census_data['2000'] = census_data['2000'] / 1000000
+census_data['2010'] = census_data['2010'] / 1000000
 
 # Specify states of interest.
 states = ['North Carolina', 'Maryland', 'New Jersey', 'Pennsylvania', 'Virginia', 'New York']
@@ -47,47 +47,47 @@ ax1 = fig.add_subplot(1, 1, 1)
 # Add scatter plot data.
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'North Carolina']['Population'],
-            label = 'North Carolina',
+            label = 'N. Carolina',
             marker = 'o',
             color = '#ff5050',
-            s = 60)
+            s = 65)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'Maryland']['Population'],
             label = 'Maryland',
             marker = 'v',
             color = '#ffcc00',
-            s = 60)
+            s = 65)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'New Jersey']['Population'],
             label = 'New Jersey',
             marker = 's',
             color = '#009933',
-            s = 60)
+            s = 65)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'Pennsylvania']['Population'],
-            label = 'Pennsylvania',
+            label = 'Penn.',
             marker = '*',
             color = '#614126',
-            s = 60)
+            s = 65)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'Virginia']['Population'],
             label = 'Virginia',
             marker = '+',
             color = '#000099',
-            s = 60)
+            s = 65)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'New York']['Population'],
             label = 'New York',
             marker = 'x',
             color = '#cc00ff',
-            s = 60)
+            s = 65)
 
 # Set x-axis and y-axis limits.
 plt.xlim([1958, 2002])
-plt.ylim([0, 20000])
+plt.ylim([0, 20])
 
 # Change x-axis and y-axis tick label size.
-ax1.tick_params(axis = 'both', labelsize = 13)
+ax1.tick_params(axis = 'both', labelsize = 14)
 
 # Remove first and last x-axis label (not needed).
 ax1.xaxis.get_major_ticks()[0].label1.set_visible(False)
@@ -105,20 +105,20 @@ ax1.title.set_position([0.5, 1.04])
 ax1.xaxis.labelpad = 9
 
 # Set plot and axes titles.
-plt.title('Selected State Populations (in thousands) Over Time',
+plt.title('Selected State Populations (in millions) Over Time',
           fontweight = 'bold')
 plt.xlabel('Year',
            fontweight = 'bold',
-           fontsize = 12.5,
+           fontsize = 14,
            color = 'black')
-plt.ylabel('Population (in thousands)',
+plt.ylabel('Population (in millions)',
            fontweight = 'bold',
-           fontsize = 12.5,
+           fontsize = 14,
            color = 'black')
 
 # Adjust plot margins.
-plt.subplots_adjust(left = 0.14,
-                    bottom = 0.1,
+plt.subplots_adjust(left = 0.13,
+                    bottom = 0.11,
                     right = 0.75,
                     top = 0.92)
 
@@ -126,8 +126,8 @@ plt.subplots_adjust(left = 0.14,
 legend = plt.legend(title = 'State',
                     bbox_to_anchor = (1.4, 0.675),
                     scatterpoints = 1,
-                    fontsize = 12)
-plt.setp(legend.get_title(), fontsize = 14)
+                    fontsize = 14)
+plt.setp(legend.get_title(), fontsize = 15)
 
 # Show plot.
 plt.show()

@@ -110,7 +110,8 @@ ax1.tick_params(axis = 'both',
                 labelsize = 12)
 
 # Show legend for first subplot.
-plt.legend()
+plt.legend(loc = 'upper center',
+           ncol = 3)
 
 # Create second subplot.
 ax2 = fig.add_subplot(2, 1, 2,
@@ -154,7 +155,7 @@ plt.ylabel('Percentage Growth',
            color = 'black')
 
 # Add legend.
-plt.legend()
+plt.legend(loc = 'upper center')
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.09,

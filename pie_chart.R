@@ -26,8 +26,8 @@ census_data = data.table(read.csv('census_data.csv',
   # Create data subset (specified above).
   census_subset = census_data[Name %in% states, .(Name, `2010`)]
   
-  # Divide population values by 1000 for easier graph viewing.
-  census_subset$`2010` = census_subset$`2010` / 1000
+  # Divide population values by 1000000 for easier graph viewing.
+  census_subset$`2010` = census_subset$`2010` / 1000000
   
   # Compute percentage of total population accounted for by each state.
   
@@ -70,7 +70,7 @@ geom_text(aes(y = label_locations,
           size = 6) +
 coord_polar('y', 
             start = 5.55) +
-guides(fill = guide_legend(title = 'Population\n(thousands)')) +
+guides(fill = guide_legend(title = 'Population\n(millions)')) +
 theme_few() +
 theme(axis.ticks = element_blank(), 
       axis.text.x = element_text(color = 'black', 
@@ -82,10 +82,10 @@ theme(axis.ticks = element_blank(),
       panel.background = element_rect(fill = 'lightgrey', 
                                       colour = 'lightgrey'), 
       legend.text = element_text(size = 17), 
-      legend.title = element_text(size = 16)) +
+      legend.title = element_text(size = 17)) +
 scale_y_continuous(breaks = census_subset$label_locations, 
                    labels = census_subset$Name) +
 scale_fill_brewer(palette = 'Set1') +
-ggtitle('Selected State 2010 Population (thousands) and Percentage') +
+ggtitle('Selected State 2010 Population (millions) and Percentage') +
 xlab('') +
 ylab('')

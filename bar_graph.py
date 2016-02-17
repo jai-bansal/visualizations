@@ -59,7 +59,8 @@ for i in range(0, len(census_subset['Name'])):
              (bars[i].get_height() + 350),
              round(bars[i].get_height(), 1),
              horizontalalignment = 'center',
-             verticalalignment = 'center')
+             verticalalignment = 'center',
+             fontsize = 14)
 
 # Remove ticks from both axes.
 ax1.tick_params(axis = 'both',
@@ -67,6 +68,12 @@ ax1.tick_params(axis = 'both',
 
 # Adjust plot title spacing.
 ax1.title.set_position([0.5, 1.035])
+
+# Adjust x-axis and y-axis tick label size.
+plt.tick_params(axis = 'both', labelsize = 12)
+
+# Adjust x-axis.
+plt.xlim([-0.75, 7.25])
 
 # Adjust x-axis title spacing.
 ax1.xaxis.labelpad = 10
@@ -80,13 +87,14 @@ plt.xticks(np.arange(0,
 
 # Set plot and axes titles.
 plt.title('Selected State Populations in 2010 (in thousands)',
-          fontweight = 'bold')
+          fontweight = 'bold',
+          fontsize = 16)
 plt.xlabel('State',
            fontweight = 'bold',
-           fontsize = 12.5)
+           fontsize = 13)
 plt.ylabel('2010 Population (in thousands)',
            fontweight = 'bold',
-           fontsize = 12.5)
+           fontsize = 13)
 
 # Add grid.
 ax1.grid(zorder = 0)

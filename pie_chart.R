@@ -41,7 +41,7 @@ census_data = data.table(read.csv('census_data.csv',
     # Change 'census_subset$Name' from state name to state abbreviation so labels fit on pie chart.
     census_subset$Name = ifelse(census_subset$Name == 'North Carolina', 'North\nCarolina', 
                                 ifelse(census_subset$Name == 'Maryland', 'Maryland', 
-                                       ifelse(census_subset$Name == 'New Jersey', 'New\nJersey', 
+                                       ifelse(census_subset$Name == 'New Jersey', 'New\nJers.', 
                                               ifelse(census_subset$Name == 'Pennsylvania', 'Penn.', 
                                                      ifelse(census_subset$Name == 'Virginia', 'Virginia', 'New\nYork')))))
   
@@ -67,22 +67,22 @@ geom_bar(stat = 'identity',
          color = 'black') +
 geom_text(aes(y = label_locations, 
               label = census_subset$percent), 
-          size = 5) +
+          size = 6) +
 coord_polar('y', 
             start = 5.55) +
 guides(fill = guide_legend(title = 'Population\n(thousands)')) +
 theme_few() +
 theme(axis.ticks = element_blank(), 
       axis.text.x = element_text(color = 'black', 
-                                 size = 16, 
+                                 size = 17, 
                                  vjust = 10), 
       plot.title = element_text(face = 'bold', 
                                 size = 18, 
                                 vjust = 2),
       panel.background = element_rect(fill = 'lightgrey', 
                                       colour = 'lightgrey'), 
-      legend.text = element_text(size = 15), 
-      legend.title = element_text(size = 14)) +
+      legend.text = element_text(size = 17), 
+      legend.title = element_text(size = 16)) +
 scale_y_continuous(breaks = census_subset$label_locations, 
                    labels = census_subset$Name) +
 scale_fill_brewer(palette = 'Set1') +

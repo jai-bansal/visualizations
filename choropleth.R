@@ -56,9 +56,9 @@ ggplot(data = census_subset,
           axis.text.x = element_blank(), 
           axis.text.y = element_blank(), 
           plot.title = element_text(face = 'bold', 
-                                    size = 38), 
-          legend.title = element_text(size = 32), 
-          legend.text = element_text(size = 30)) +
-    ggtitle('2010 Contiguous United States Population (in thousands) by State') +
+                                    size = 18), 
+          legend.title = element_text(size = 22), 
+          legend.text = element_text(size = 22)) +
+    ggtitle('2010 Contiguous United States Population (in millions) by State') +
     xlab('') +
     ylab('')

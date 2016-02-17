@@ -71,9 +71,9 @@ ggplot(data = census_subset_transpose,
   ylim(c(10000, 13000)) + 
   theme_economist() +
   theme(axis.text.x = element_text(color = 'black', 
-                                   size = 15), 
+                                   size = 16), 
         axis.text.y = element_text(color = 'black', 
-                                   size = 15), 
+                                   size = 16), 
         axis.title.x = element_text(face = 'bold', 
                                     size = 16),
         axis.title.y = element_text(face = 'bold',
@@ -82,8 +82,8 @@ ggplot(data = census_subset_transpose,
         plot.title = element_text(face = 'bold', 
                                   size = 17, 
                                   hjust = 0.35), 
-        legend.title = element_text(size = 16),
-        legend.text = element_text(size = 15)) +
+        legend.title = element_text(size = 17),
+        legend.text = element_text(size = 16)) +
   annotate('text', 
            x = 1, 
            y = 10000, 

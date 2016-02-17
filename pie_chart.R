@@ -37,6 +37,13 @@ census_data = data.table(read.csv('census_data.csv',
     # Change to 'character' vector with form 'percent + %'.
     census_subset$percent = as.character(census_subset$percent)
     census_subset$percent = paste0(census_subset$percent, '%')
+    
+    # Change 'census_subset$Name' from state name to state abbreviation so labels fit on pie chart.
+    census_subset$Name = ifelse(census_subset$Name == 'North Carolina', 'North\nCarolina', 
+                                ifelse(census_subset$Name == 'Maryland', 'Maryland', 
+                                       ifelse(census_subset$Name == 'New Jersey', 'New\nJersey', 
+                                              ifelse(census_subset$Name == 'Pennsylvania', 'Penn.', 
+                                                     ifelse(census_subset$Name == 'Virginia', 'Virginia', 'New\nYork')))))
   
   # Specify locations for pie chart labels.
   
@@ -62,12 +69,13 @@ geom_text(aes(y = label_locations,
               label = census_subset$percent), 
           size = 5) +
 coord_polar('y', 
-            start = 80) +
+            start = 5.55) +
 guides(fill = guide_legend(title = 'Population\n(thousands)')) +
 theme_few() +
 theme(axis.ticks = element_blank(), 
       axis.text.x = element_text(color = 'black', 
-                                 size = 16), 
+                                 size = 16, 
+                                 vjust = 10), 
       plot.title = element_text(face = 'bold', 
                                 size = 18, 
                                 vjust = 2),
@@ -78,6 +86,6 @@ theme(axis.ticks = element_blank(),
 scale_y_continuous(breaks = census_subset$label_locations, 
                    labels = census_subset$Name) +
 scale_fill_brewer(palette = 'Set1') +
-ggtitle('Selected State Population (in thousands) and Percentage in 2010') +
+ggtitle('Selected State 2010 Population (thousands) and Percentage') +
 xlab('') +
 ylab('')

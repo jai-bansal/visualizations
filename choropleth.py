@@ -20,8 +20,8 @@ census_subset = census_data[['Name', '2010']]
 # Remove aggregate 'United States' population row.
 census_subset = census_subset[census_subset['Name'] != 'United States']
 
-# Divide '2010' population value by 1000 for easier graph viewing.
-census_subset['2010'] = census_subset['2010'] / 1000
+# Divide '2010' population value by 1000000 for easier graph viewing.
+census_subset['2010'] = census_subset['2010'] / 1000000
 
 # Add state abbreviations. This is necessary for plotting.
 census_subset['abbreviations'] = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA',
@@ -46,11 +46,11 @@ choropleth = [dict(
                             z = census_subset['2010'].round(1),
                             locationmode = 'USA-states',
               colorbar = dict(
-                                  title = 'Population (in thousands)'))]
+                                  title = 'Pop. (in millions)'))]
 
 # Create layout.
 layout = dict(
-                    title = '2010 United States Population (in thousands) by State',
+                    title = '2010 United States Population (in millions) by State',
                     geo = dict(
                                     scope = 'usa',
                                     showlakes = False),

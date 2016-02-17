@@ -88,7 +88,7 @@ ggplot(data = census_subset,
                                   size = 18, 
                                   vjust = 2), 
          legend.title = element_text(size = 18), 
-         legend.text = element_text(size = 17)) +
+         legend.text = element_text(size = 18)) +
     ggtitle('Great Lakes Region Population (in thousands) by Year and State') +
     xlab('Year') +
     ylab('Population (in thousands)')

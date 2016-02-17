@@ -19,13 +19,13 @@ census_data = pd.read_csv('census_data.csv',
 
 # SUBSET/PROCESS DATA.
 
-# Divide population values by 1000 for easier graph viewing.
-census_data['1960'] = census_data['1960'] / 100000
-census_data['1970'] = census_data['1970'] / 100000
-census_data['1980'] = census_data['1980'] / 100000
-census_data['1990'] = census_data['1990'] / 100000
-census_data['2000'] = census_data['2000'] / 100000
-census_data['2010'] = census_data['2010'] / 100000
+# Divide population values by 1000000 for easier graph viewing.
+census_data['1960'] = census_data['1960'] / 1000000
+census_data['1970'] = census_data['1970'] / 1000000
+census_data['1980'] = census_data['1980'] / 1000000
+census_data['1990'] = census_data['1990'] / 1000000
+census_data['2000'] = census_data['2000'] / 1000000
+census_data['2010'] = census_data['2010'] / 1000000
 
 # Specify states of interest.
 states = ['Maryland', 'Pennsylvania', 'Virginia', 'West Virginia']
@@ -93,7 +93,7 @@ plt.title('Selected State Populations and Areas Over Time')
 plt.xlabel('Year',
            fontsize = 12.5,
            color = 'black')
-plt.ylabel('Pop. (hundred thousands)',
+plt.ylabel('Pop. (in millions)',
            fontsize = 12.5,
            color = 'black')
 ax1.set_zlabel('Area (thousands of sq. miles)',
@@ -101,8 +101,10 @@ ax1.set_zlabel('Area (thousands of sq. miles)',
                color = 'black')
 
 # Add legend.
-plt.legend(scatterpoints = 1,
+legend = plt.legend(title = 'State',
+           scatterpoints = 1,
            bbox_to_anchor = (1.45, 0.6))
+plt.setp(legend.get_title(), fontsize = 16)
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.12, bottom = 0.08, right = 0.73, top = 0.97)

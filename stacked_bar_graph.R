@@ -32,13 +32,13 @@ census_data = data.table(read.csv('census_data.csv',
   # Subset data.
   census_subset = census_data[Name %in% great_lakes]
   
-  # Divide population values by 1000 for easier graph viewing.
-  census_subset$`1960` = census_subset$`1960` / 1000
-  census_subset$`1970` = census_subset$`1970` / 1000
-  census_subset$`1980` = census_subset$`1980` / 1000
-  census_subset$`1990` = census_subset$`1990` / 1000
-  census_subset$`2000` = census_subset$`2000` / 1000
-  census_subset$`2010` = census_subset$`2010` / 1000
+  # Divide population values by 1000000 for easier graph viewing.
+  census_subset$`1960` = census_subset$`1960` / 1000000
+  census_subset$`1970` = census_subset$`1970` / 1000000
+  census_subset$`1980` = census_subset$`1980` / 1000000
+  census_subset$`1990` = census_subset$`1990` / 1000000
+  census_subset$`2000` = census_subset$`2000` / 1000000
+  census_subset$`2010` = census_subset$`2010` / 1000000
 
   # Melt 'census_subset' to allow stacked bar graph.
   census_subset = melt(census_subset, 
@@ -69,26 +69,26 @@ ggplot(data = census_subset,
            fill = State, 
            order = State)) +
     geom_bar(stat = 'identity') +
-    geom_text(aes(label = round(census_subset$Population, 1), 
+    geom_text(aes(label = round(census_subset$Population, 2), 
                   x = Year,  
                   y = y_coordinate), 
               size = 5.5, 
               color = 'white') +
     theme(axis.text.x =  element_text(color = 'black', 
-                                      size = 16), 
+                                      size = 17), 
           axis.text.y = element_text(color = 'black', 
-                                     size = 16), 
+                                     size = 17), 
           axis.title.x = element_text(face = 'bold', 
-                                    size = 16, 
+                                    size = 17, 
                                     vjust = -0.25), 
          axis.title.y = element_text(face = 'bold', 
-                                    size = 16, 
+                                    size = 17, 
                                     vjust = 1), 
          plot.title = element_text(face = 'bold',
-                                  size = 18, 
+                                  size = 19, 
                                   vjust = 2), 
          legend.title = element_text(size = 18), 
          legend.text = element_text(size = 18)) +
-    ggtitle('Great Lakes Region Population (in thousands) by Year and State') +
+    ggtitle('Great Lakes Region Population (in millions) by Year and State') +
     xlab('Year') +
-    ylab('Population (in thousands)')
+    ylab('Population (in millions)')

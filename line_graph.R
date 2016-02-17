@@ -25,13 +25,13 @@ census_data = data.table(read.csv('census_data.csv',
   # Subset data.
   census_subset = census_data[Name == 'Pennsylvania' | Name == 'Illinois']
   
-  # Divide population values by 1000 for easier graph viewing.
-  census_subset$`1960` = census_subset$`1960` / 1000
-  census_subset$`1970` = census_subset$`1970` / 1000
-  census_subset$`1980` = census_subset$`1980` / 1000
-  census_subset$`1990` = census_subset$`1990` / 1000
-  census_subset$`2000` = census_subset$`2000` / 1000
-  census_subset$`2010` = census_subset$`2010` / 1000
+  # Divide population values by 1000000 for easier graph viewing.
+  census_subset$`1960` = census_subset$`1960` / 1000000
+  census_subset$`1970` = census_subset$`1970` / 1000000
+  census_subset$`1980` = census_subset$`1980` / 1000000
+  census_subset$`1990` = census_subset$`1990` / 1000000
+  census_subset$`2000` = census_subset$`2000` / 1000000
+  census_subset$`2010` = census_subset$`2010` / 1000000
   
   # Reshape data for line graph.
     
@@ -68,7 +68,7 @@ ggplot(data = census_subset_transpose,
            color = State)) + 
   geom_line() + 
   geom_point() + 
-  ylim(c(10000, 13000)) + 
+  ylim(c(10, 13.05)) + 
   theme_economist() +
   theme(axis.text.x = element_text(color = 'black', 
                                    size = 16), 
@@ -79,31 +79,32 @@ ggplot(data = census_subset_transpose,
         axis.title.y = element_text(face = 'bold',
                                     size = 16, 
                                     vjust = 1),
+        axis.ticks = element_blank(),
         plot.title = element_text(face = 'bold', 
                                   size = 17, 
                                   hjust = 0.35), 
         legend.title = element_text(size = 17),
         legend.text = element_text(size = 16)) +
   annotate('text', 
-           x = 1, 
-           y = 10000, 
-           label = census_subset_transpose[State == 'Illinois' & Year == '1960']$Population, 
+           x = 0.91, 
+           y = 10.3, 
+           label = round(census_subset_transpose[State == 'Illinois' & Year == '1960']$Population, 2), 
            size = 5.5) +
   annotate('text',
            x = 1, 
-           y = 11250, 
-           label = census_subset_transpose[State == 'Pennsylvania' & Year == '1960']$Population, 
+           y = 11.55, 
+           label = round(census_subset_transpose[State == 'Pennsylvania' & Year == '1960']$Population, 2), 
            size = 5.5) + 
   annotate('text', 
-           x = 6.2, 
-           y = 12600, 
-           label = census_subset_transpose[State == 'Pennsylvania' & Year == '2010']$Population, 
+           x = 6, 
+           y = 12.55, 
+           label = round(census_subset_transpose[State == 'Pennsylvania' & Year == '2010']$Population, 2), 
            size = 5.5) +
   annotate('text', 
            x = 6, 
-           y = 12950, 
-           label = census_subset_transpose[State == 'Illinois' & Year == '2010']$Population, 
+           y = 13.02, 
+           label = round(census_subset_transpose[State == 'Illinois' & Year == '2010']$Population, 2), 
            size = 5.5) +
-  ggtitle('Population (in thousands) Over Time for Selected States') +
+  ggtitle('Population (in milions) Over Time for Selected States') +
   xlab('Year') +
-  ylab('Population (in thousands)')
+  ylab('Population (in millions)')

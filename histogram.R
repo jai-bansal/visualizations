@@ -24,68 +24,68 @@ census_data = data.table(read.csv('census_data.csv',
   # Remove row containing total population of United States.
   census_subset = census_subset[Name != 'United States']
   
-  # Divide population values by 1000 for easier graph viewing.
-  census_subset$`2010` = census_subset$`2010` / 1000
+  # Divide population values by 1000000 for easier graph viewing.
+  census_subset$`2010` = census_subset$`2010` / 1000000
   
 #####
 # Plot data.
 ggplot(data = census_subset, 
        aes(x = `2010`)) +
-  geom_histogram(binwidth = 1500, 
+  geom_histogram(binwidth = 1.5, 
                  fill = I('darkgreen'), 
                  col = I('black')) +
   theme_bw() +
   scale_y_continuous(breaks = seq(0, 14, by = 1)) + 
-  scale_x_discrete(breaks = seq(0, 40000, by = 5000)) +
+  scale_x_discrete(breaks = seq(0, 40, by = 5)) +
   theme(axis.text.x = element_text(color = 'black', 
-                                   size = 15), 
+                                   size = 17), 
         axis.text.y = element_text(color = 'black', 
-                                   size = 15),
+                                   size = 17),
         axis.title.x = element_text(face = 'bold', 
-                                    size = 16, 
+                                    size = 18, 
                                     vjust = -0.5),
         axis.title.y = element_text(face = 'bold',
-                                    size = 16),
+                                    size = 18),
         plot.title = element_text(face = 'bold', 
-                                  size = 17, 
+                                  size = 19, 
                                   vjust = 2), 
         panel.grid.minor = element_blank()) +
-  geom_segment(aes(x = 26000, 
+  geom_segment(aes(x = 26, 
                    y = 2, 
-                   xend = 25000, 
+                   xend = 25, 
                    yend = 1.1), 
-               arrow = arrow(length = unit(0.5, 'cm')), 
+               arrow = arrow(length = unit(0.4, 'cm')), 
                size = 1) +
-  geom_segment(aes(x = 35000, 
+  geom_segment(aes(x = 35, 
                    y = 2, 
-                   xend = 36000, 
+                   xend = 36, 
                    yend = 1.1), 
-               arrow = arrow(length = unit(0.5, 'cm')), 
+               arrow = arrow(length = unit(0.4, 'cm')), 
                size = 1) +
   annotate('text', 
-           x = 26000, 
-           y = 2.8,
-           label = census_subset[`2010` > 20000 & `2010` < 30000]$Name,
+           x = 26, 
+           y = 3.1,
+           label = census_subset[`2010` > 20 & `2010` < 30]$Name,
            size = 6) +
   annotate('text', 
-           x = 26000, 
-           y = 2.3, 
+           x = 26, 
+           y = 2.5, 
            label = paste0('(', 
                           round(census_subset[Name == 'Texas']$`2010`, 2), 
                           ')'), 
            size = 6) +
   annotate('text', 
-           x = 35000, 
-           y = 2.8, 
-           label = census_subset[`2010` > 30000]$Name, 
+           x = 35, 
+           y = 3.1, 
+           label = census_subset[`2010` > 30]$Name, 
            size = 6) +
   annotate('text', 
-           x = 35000, 
-           y = 2.3, 
+           x = 35, 
+           y = 2.5, 
            label = paste0('(', 
                           round(census_subset[Name == 'California']$`2010`, 2), 
                           ')'), 
            size = 6) +
-  ggtitle('Histogram of 2010 US State Populations (in thousands)') +
-  xlab('2010 Populations (in thousands)') +
+  ggtitle('Histogram of 2010 US State Populations (in millions)') +
+  xlab('2010 Populations (in millions)') +
   ylab('Number of States')

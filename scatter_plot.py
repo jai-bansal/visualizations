@@ -50,37 +50,37 @@ plt.scatter(census_subset['Year'].unique().tolist(),
             label = 'North Carolina',
             marker = 'o',
             color = '#ff5050',
-            s = 40)
+            s = 60)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'Maryland']['Population'],
             label = 'Maryland',
             marker = 'v',
             color = '#ffcc00',
-            s = 40)
+            s = 60)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'New Jersey']['Population'],
             label = 'New Jersey',
             marker = 's',
             color = '#009933',
-            s = 40)
+            s = 60)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'Pennsylvania']['Population'],
             label = 'Pennsylvania',
             marker = '*',
             color = '#614126',
-            s = 40)
+            s = 60)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'Virginia']['Population'],
             label = 'Virginia',
             marker = '+',
             color = '#000099',
-            s = 40)
+            s = 60)
 plt.scatter(census_subset['Year'].unique().tolist(),
             census_subset[census_subset['State'] == 'New York']['Population'],
             label = 'New York',
             marker = 'x',
             color = '#cc00ff',
-            s = 40)
+            s = 60)
 
 # Set x-axis and y-axis limits.
 plt.xlim([1958, 2002])
@@ -118,7 +118,7 @@ plt.ylabel('Population (in thousands)',
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.14,
-                    bottom = 0.11,
+                    bottom = 0.1,
                     right = 0.75,
                     top = 0.92)
 
@@ -127,7 +127,7 @@ legend = plt.legend(title = 'State',
                     bbox_to_anchor = (1.4, 0.675),
                     scatterpoints = 1,
                     fontsize = 12)
-plt.setp(legend.get_title(), fontsize = 13)
+plt.setp(legend.get_title(), fontsize = 14)
 
 # Show plot.
 plt.show()

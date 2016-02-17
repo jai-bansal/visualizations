@@ -27,8 +27,8 @@ census_subset = census_subset[['Name', '2010']]
 census_subset.reset_index(drop = True,
                           inplace = True)
 
-# Divide population values by 1000 for easier graph viewing.
-census_subset['2010'] = census_subset['2010'] / 1000
+# Divide population values by 1000000 for easier graph viewing.
+census_subset['2010'] = census_subset['2010'] / 1000000
 
 # PLOT DATA.
 
@@ -41,7 +41,7 @@ colors = ['#ff5050', '#ffcc00', '#009933', '#00ffcc', '#000099', '#cc00ff']
 
 # Introduce 'shift' parameter.
 # This parameter helps space out the bars so there's enough room for labels.
-shift = 1.3
+shift = 1.5
 
 # Insert plot data.
 # This must be done in an absurd way since 'matplotlib.pyplot' can't handle strings.
@@ -56,8 +56,8 @@ bars = ax1.bar(np.arange(0,
 # Annotate bars with '2010' population values.
 for i in range(0, len(census_subset['Name'])):
     plt.text((i * shift),
-             (bars[i].get_height() + 350),
-             round(bars[i].get_height(), 1),
+             (bars[i].get_height() + 0.35),
+             round(bars[i].get_height(), 2),
              horizontalalignment = 'center',
              verticalalignment = 'center',
              fontsize = 14)
@@ -73,7 +73,7 @@ ax1.title.set_position([0.5, 1.035])
 plt.tick_params(axis = 'both', labelsize = 12)
 
 # Adjust x-axis.
-plt.xlim([-0.75, 7.25])
+plt.xlim([-0.75, 8.25])
 
 # Adjust x-axis title spacing.
 ax1.xaxis.labelpad = 10
@@ -86,15 +86,15 @@ plt.xticks(np.arange(0,
            horizontalalignment = 'center')
 
 # Set plot and axes titles.
-plt.title('Selected State Populations in 2010 (in thousands)',
+plt.title('Selected State Populations in 2010 (in millions)',
           fontweight = 'bold',
           fontsize = 16)
 plt.xlabel('State',
            fontweight = 'bold',
-           fontsize = 13)
-plt.ylabel('2010 Population (in thousands)',
+           fontsize = 14)
+plt.ylabel('2010 Population (in millions)',
            fontweight = 'bold',
-           fontsize = 13)
+           fontsize = 14)
 
 # Add grid.
 ax1.grid(zorder = 0)

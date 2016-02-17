@@ -25,8 +25,8 @@ states = ['North Carolina', 'Maryland', 'New Jersey', 'Pennsylvania', 'Virginia'
 # Create data subset (specified above).
 census_subset = census_data[census_data['Name'].isin(states)][['Name', '2010']]
 
-# Divide '2010' population value by 1000 for easier graph viewing.
-census_subset['2010']= census_subset['2010'] / 1000
+# Divide '2010' population value by 1000000 for easier graph viewing.
+census_subset['2010']= census_subset['2010'] / 1000000
 
 # PLOT DATA.
 
@@ -46,20 +46,20 @@ one, two, three = ax1.pie(sizes,
         autopct = '%1.1f%%')
 
 # Set state label font size.
-two[0].set_fontsize(17)
-two[1].set_fontsize(17)
-two[2].set_fontsize(17)
-two[3].set_fontsize(17)
-two[4].set_fontsize(17)
-two[5].set_fontsize(17)
+two[0].set_fontsize(19)
+two[1].set_fontsize(19)
+two[2].set_fontsize(19)
+two[3].set_fontsize(19)
+two[4].set_fontsize(19)
+two[5].set_fontsize(19)
 
 # Set percentage label font size.
-three[0].set_fontsize(17)
-three[1].set_fontsize(17)
-three[2].set_fontsize(17)
-three[3].set_fontsize(17)
-three[4].set_fontsize(17)
-three[5].set_fontsize(17)
+three[0].set_fontsize(19)
+three[1].set_fontsize(19)
+three[2].set_fontsize(19)
+three[3].set_fontsize(19)
+three[4].set_fontsize(19)
+three[5].set_fontsize(19)
 
 # Remove weird default pie chart tilt.
 plt.axis('equal')
@@ -68,9 +68,9 @@ plt.axis('equal')
 ax1.title.set_position([0.5, 0.9])
 
 # Set plot titles.
-plt.title('Selected State 2010 Population (in thousands) and Percentage',
+plt.title('Selected States 2010 Population (millions) and Percentage',
           fontweight = 'bold',
-          fontsize = 19)
+          fontsize = 20)
 
 # Adjust plot margins.
 plt.subplots_adjust(left = 0.25,
@@ -79,11 +79,11 @@ plt.subplots_adjust(left = 0.25,
                     top = 0.95)
 
 # Add legend.
-legend = plt.legend(title = 'Population\n(thousands)',
+legend = plt.legend(title = 'Population\n(millions)',
            labels = census_subset['2010'].round(1),
-           fontsize = 16,
-           bbox_to_anchor = (1.75, 0.76))
-plt.setp(legend.get_title(), fontsize = 17)
+           fontsize = 18,
+           bbox_to_anchor = (1.75, 0.78))
+plt.setp(legend.get_title(), fontsize = 19)
 
 # Show plot.
 plt.show()

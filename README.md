@@ -44,7 +44,7 @@ Added to this is the area of each state. This data comes from Wikipedia and can 
 
 All visualizations use only a subset of this data.
 
-Each branche contains 'census_data_scrape_and_process' (.R or .py depending on the branch).
+Each branch contains 'census_data_scrape_and_process' (.R or .py depending on the branch).
 This script scrapes the data from the web. 
 Each branch also contains 'census_data.csv', which is the data file used in all visualizations.
 

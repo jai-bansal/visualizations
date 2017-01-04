@@ -54,12 +54,14 @@ census_data['70_80_growth'] = (census_data['1980'] - census_data['1970']) / cens
 # Create correlation matrix.
 correlation_matrix = census_data.corr()
 
-
-#plt.matshow(correlation_matrix)
-
+# Create correlation plot.
 seaborn.heatmap(correlation_matrix,
                 xticklabels = correlation_matrix.columns.values,
-                yticklabels = correlation_matrix.columns.values,
-                linewidths = 5)
+                yticklabels = correlation_matrix.columns.values)
 
+# Edit labels for visibility.
+plt.xticks(rotation = 90)
+plt.yticks(rotation = 0)
+
+# View correlation plot.
 plt.show()

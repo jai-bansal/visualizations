@@ -7,12 +7,11 @@ library(data.table)
 library(dplyr)
 library(randomForest)
 library(kknn)
-
+library(pROC)
 
 # IMPORT DATA -------------------------------------------------------------
 # This section imports the data to be used in the script.
 census_data = data.table(read_csv('census_data.csv'))
-
 
 # CLEAN AND PROCESS DATA --------------------------------------------------------------
 # This section cleans and processes 'census_data' so predictive models can be built smoothly.
@@ -33,7 +32,6 @@ census_data = data.table(read_csv('census_data.csv'))
   # To generate an ROC curve, I need a classification model.
   # For a classification model, I generate a binary variable.
   census_data$size = as.factor(ifelse(census_data$`Area (sq. miles)` > median(census_data$`Area (sq. miles)`), 1, 0))
-
 
 # CREATE PREDICTIVE MODELS ----------------------------------------------
 # This section creates random forest and k nearest neighbor models.
@@ -62,26 +60,26 @@ census_data = data.table(read_csv('census_data.csv'))
 
 # PLOT ROC CURVES ---------------------------------------------------------
 # This section plots ROC curves for the predictive models above.
-
   
-  
-   plot(performance(prediction(pred_test$rrf_term_prob, 
-                              pred_test$outcome), 
-                   'tpr', 'fpr'))
-   
-   
-   
-     plot(roc(pred_test$outcome, 
-           pred_test$rrf_term_prob), 
+  # Add random forest model ROC curve.
+  plot(roc(census_data$size, 
+           census_data$rf_pred), 
        col = 'red', 
        print.auc = T, 
-       print.auc.y = 0.5)
-  plot(roc(pred_test$outcome, 
-           pred_test$adaboost_prob), 
+       print.auc.x = 0.9, 
+       print.auc.y = 1.1)
+  
+  # Add k nearest neighbor ROC curve.
+  plot(roc(census_data$size, 
+           census_data$knn_pred), 
        col = 'blue', 
        print.auc = T, 
-       add = T, 
-       print.auc.y = 0.75)
-    
-
-
+       print.auc.x = 0.9,
+       print.auc.y = 0.85, 
+       add = T)
+  
+  # Add legend to plot.
+  legend('bottomright', 
+         legend = c('RF', 'KNN'), 
+         col = c('red', 'blue'), 
+         lwd = 2)

@@ -1,4 +1,4 @@
-# This script plots ROC curves using 'census_data.csv'.
+# This script plots ROC curves and and a lift chart using 'census_data.csv'.
 
 # LOAD LIBRARIES ----------------------------------------------------------
 # This section loads necessary libraries for this script.
@@ -8,6 +8,7 @@ library(dplyr)
 library(randomForest)
 library(kknn)
 library(pROC)
+library(ROCR)
 
 # IMPORT DATA -------------------------------------------------------------
 # This section imports the data to be used in the script.
@@ -80,6 +81,29 @@ census_data = data.table(read_csv('census_data.csv'))
   
   # Add legend to plot.
   legend('bottomright', 
+         legend = c('RF', 'KNN'), 
+         col = c('red', 'blue'), 
+         lwd = 2)
+  
+
+# PLOT LIFT CHART ---------------------------------------------------------
+# This section plots a lift chart for the predictive models above.
+  
+  # Add lift chart for random forest model.
+  plot(performance(prediction(census_data$rf_pred, 
+                              census_data$size), 
+                   'lift', 'rpp'), 
+       col = 'blue')
+  
+  # Add lift chart for KNN model.
+  plot(performance(prediction(census_data$knn_pred, 
+                              census_data$size), 
+                   'lift', 'rpp'), 
+       col = 'red', 
+       add = T)
+  
+  # Add legend.
+  legend('bottomleft', 
          legend = c('RF', 'KNN'), 
          col = c('red', 'blue'), 
          lwd = 2)

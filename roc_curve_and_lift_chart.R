@@ -37,6 +37,7 @@ census_data = data.table(read_csv('census_data.csv'))
 # CREATE PREDICTIVE MODELS ----------------------------------------------
 # This section creates random forest and k nearest neighbor models.
 # Since I'm only interested in ROC curves, I do not split the data into training and test sets.
+# I also do not scale the data before applying k nearest neighbor for the same reason.
   
   # Create random forest model.
   set.seed(666)

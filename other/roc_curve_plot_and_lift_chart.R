@@ -12,6 +12,7 @@ library(ROCR)
 
 # IMPORT DATA -------------------------------------------------------------
 # This section imports the data to be used in the script.
+# Note that the data is located in the 'visualizations' folder, NOT the 'ggplot' folder.
 census_data = data.table(read_csv('census_data.csv'))
 
 # CLEAN AND PROCESS DATA --------------------------------------------------------------

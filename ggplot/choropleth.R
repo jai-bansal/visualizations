@@ -9,6 +9,7 @@ library(data.table)
 library(ggplot2)
 
 # Load data.
+# Note that the data is located in the 'visualizations' folder, NOT the 'ggplot' folder.
 census_data = data.table(read.csv('census_data.csv', 
                                   header = T, 
                                   stringsAsFactors = F, 

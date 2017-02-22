@@ -1,4 +1,4 @@
-# This script creates a pie chart using (a subset of) 'census_data.csv'.
+# This script creates a pie chart using (a subset of) 'census_data.csv' using the 'ggplot2' library.
 
 # A description of 'census_data.csv' can be found in 'census_data_scrape_and_process.R'.
 # To avoid an overwhelming plot, I will be using a subset of 'census_data.csv' consisting of

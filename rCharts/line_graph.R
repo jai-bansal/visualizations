@@ -4,16 +4,20 @@
 # To avoid an overwhelming plot, I will be using a subset of 'census_data.csv' consisting of
 # all observations for Pennsylvania and Illinois.
 
+
 # LOAD LIBRARIES ----------------------------------------------------------
 # This section loads the necessary libraries for this script.
-library(readr)
 library(data.table)
 library(rCharts)
+
 
 # IMPORT DATA -------------------------------------------------------------
 # This section imports the data for this script.
 # Note that the data is in the 'visualizations' folder, NOT the 'rCharts' folder.
-census_data = data.table(read_csv('census_data.csv'))
+census_data = data.table(read.csv('census_data.csv', 
+                                  header = T, 
+                                  stringsAsFactors = F, 
+                                  check.names = F))
 
 # SUBSET/PROCESS DATA -----------------------------------------------------
 # This section prepares the data prior to plotting.
@@ -57,64 +61,22 @@ census_data = data.table(read_csv('census_data.csv'))
     
     # Change 'census_subset_transpose$Population' to 'numeric'.
     census_subset_transpose$Population = as.numeric(census_subset_transpose$Population)
+    
 
 # PLOT DATA ---------------------------------------------------------------
 # This section plots the data.
-nPlot()
     
-a=mPlot(x = 'Year', 
-      y = c('Population'), 
-      type = 'line', 
-      data = census_subset_transpose[State == 'Illinois'])
+  # Create plot.
+  line_graph = nPlot(Population ~ Year, 
+                     data = census_subset_transpose, 
+                     type = 'lineChart', 
+                     group = 'State')
+    
+  # Label axes.
+  line_graph$xAxis(axisLabel = 'Year')
+  
+  # View plot.
+  line_graph
 
-a$print(include_assets = T)  
+
     
-    
-    
-ggplot(data = census_subset_transpose, 
-       aes(x = Year, 
-           y = Population, 
-           group = State, 
-           color = State)) + 
-  geom_line() + 
-  geom_point() + 
-  ylim(c(10, 13.05)) + 
-  theme_economist() +
-  theme(axis.text.x = element_text(color = 'black', 
-                                   size = 16), 
-        axis.text.y = element_text(color = 'black', 
-                                   size = 16), 
-        axis.title.x = element_text(face = 'bold', 
-                                    size = 16),
-        axis.title.y = element_text(face = 'bold',
-                                    size = 16, 
-                                    vjust = 1),
-        axis.ticks = element_blank(),
-        plot.title = element_text(face = 'bold', 
-                                  size = 17, 
-                                  hjust = 0.35), 
-        legend.title = element_text(size = 17),
-        legend.text = element_text(size = 16)) +
-  annotate('text', 
-           x = 0.91, 
-           y = 10.3, 
-           label = round(census_subset_transpose[State == 'Illinois' & Year == '1960']$Population, 2), 
-           size = 5.5) +
-  annotate('text',
-           x = 1, 
-           y = 11.55, 
-           label = round(census_subset_transpose[State == 'Pennsylvania' & Year == '1960']$Population, 2), 
-           size = 5.5) + 
-  annotate('text', 
-           x = 6, 
-           y = 12.55, 
-           label = round(census_subset_transpose[State == 'Pennsylvania' & Year == '2010']$Population, 2), 
-           size = 5.5) +
-  annotate('text', 
-           x = 6, 
-           y = 13.02, 
-           label = round(census_subset_transpose[State == 'Illinois' & Year == '2010']$Population, 2), 
-           size = 5.5) +
-  ggtitle('Population (in milions) Over Time for Selected States') +
-  xlab('Year') +
-  ylab('Population (in millions)')

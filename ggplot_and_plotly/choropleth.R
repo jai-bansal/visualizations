@@ -7,6 +7,7 @@
 # Load packages.
 library(data.table)
 library(ggplot2)
+library(maps)
 
 # Load data.
 # Note that the data is located in the 'visualizations' folder, NOT the 'ggplot' folder.
@@ -36,17 +37,16 @@ census_data = data.table(read.csv('census_data.csv',
   
 #####  
 # Plot data.
-ggplot(data = census_subset, 
+ggplotly(ggplot(data = census_subset, 
        aes(map_id = census_subset$Name)) + 
     geom_map(aes(fill = `2010`), 
              map = states_map) + 
     expand_limits(x = states_map$long, 
                   y = states_map$lat) +
-    scale_fill_continuous(name = 'Population\n(in millions)', 
+    scale_fill_continuous(name = 'Population\n(millions)', 
                           low = 'lightblue', 
                           high = 'darkblue') + 
     borders(database = 'state', 
-            inherit.aes = F, 
             colour = 'white') +
     theme_classic() +
     theme(panel.background = element_rect(fill = 'white', 
@@ -60,6 +60,6 @@ ggplot(data = census_subset,
                                     size = 18), 
           legend.title = element_text(size = 18), 
           legend.text = element_text(size = 17)) +
-    ggtitle('2010 Contiguous United States Population (in millions) by State') +
+    ggtitle('2010 United States Population (millions) by State') +
     xlab('') +
-    ylab('')
+    ylab(''))

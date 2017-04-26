@@ -1,12 +1,6 @@
 # This script creates a figure consisting of two subplots using (a subset of) 'census_data.csv' using the 'ggplot2' library.
 
 # A description of 'census_data.csv' can be found in 'census_data_scrape_and_process.R'.
-# To avoid an overwhelming plot, I will be using a subset of 'census_data.csv'.
-
-# The first subplot will be a grouped bar graph that uses all observations for 3 states: Vermont, Delaware, and Ohio
-# It will show the percentage growth between decades for each state.
-# The second subplot will be a bar graph that uses the aggregate United States observations
-# and shows the percentage growth between decades for the entire United States.
 
 # Population percentage growth in a decade 't' will be computed as:
 # 100 * (population(t + 1) - population(t)) / population(t)

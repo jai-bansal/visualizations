@@ -1,10 +1,8 @@
 # This script creates a stacked column chart using (a subset of) 'census_data.csv' using the 'ggplot2' and 'plotly' libraries.
 
 # A description of 'census_data.csv' can be found in 'census_data_scrape_and_process.R'.
-# To avoid an overwhelming plot, I will be using a subset of 'census_data.csv' consisting of
-# all observations for the 'Great Lakes' region.
 
-# This region is defined by the Bureau of Economic Analysis and can be viewed at the url below:
+# I choose a region (Great Lakes). This region is defined by the Bureau of Economic Analysis and can be viewed at the url below:
 # https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States
 
 # The 'Great Lakes' region as defined by the Bureau of Economic Analysis contains Wisconsin, Michigan, Illinois, Indiana, and Ohio.

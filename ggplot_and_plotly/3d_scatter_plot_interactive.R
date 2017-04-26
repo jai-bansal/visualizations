@@ -1,8 +1,6 @@
 # This script creates a 3 dimensional scatter plot using (a subset of) 'census_data.csv'.
 
 # A description of 'census_data.csv' can be found in 'census_data_scrape_and_process.R'.
-# To avoid an overwhelming plot, I will be using a subset of 'census_data.csv' consisting of
-# observations for 4 states (Maryland, Pennsylvania, Virginia, and West Virginia) in 2010.
 
 # Load packages.
 library(data.table)

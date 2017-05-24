@@ -4,6 +4,7 @@
 # IMPORT MODULES
 ################
 # This section imports necessary modules for this script.
+import os
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -14,6 +15,11 @@ from matplotlib import style
 #############
 # IMPORT DATA
 #############
+
+# Set working directory.
+# This obviously needs to be changed depending on the computer being used.
+os.chdir('D:\\Users\\JBansal\\Documents\\GitHub\\visualizations')
+
 # This section imports the data to be used in the script.
 census_data = pd.read_csv('census_data.csv',
                           encoding = 'latin-1')

@@ -5,9 +5,14 @@
 # all observations for 2010.
 
 # Import modules.
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Set working directory.
+# This obviously needs to be changed depending on the computer being used.
+os.chdir('D:\\Users\\JBansal\\Documents\\GitHub\\visualizations')
 
 # Load data.
 census_data = pd.read_csv('census_data.csv',
@@ -34,7 +39,9 @@ ax1 = fig.add_subplot(1, 1, 1)
 ax1.hist(census_subset['2010'],
          bins = 20,
          color = 'darkgreen',
-         zorder = 3)
+         zorder = 3,
+         edgecolor = 'black',
+         linewidth = 1)
 
 # Add annotations for Texas and California.
 ax1.annotate('Texas',

@@ -10,12 +10,17 @@
 # The 'Great Lakes' region as defined by the Bureau of Economic Analysis contains Wisconsin, Michigan, Illinois, Indiana, and Ohio.
 
 # Import modules.
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import style
 
 # Set style.
 style.use('seaborn-poster')
+
+# Set working directory.
+# This obviously needs to be changed depending on the computer being used.
+os.chdir('D:\\Users\\JBansal\\Documents\\GitHub\\visualizations')
 
 # Load data.
 census_data = pd.read_csv('census_data.csv',

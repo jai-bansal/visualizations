@@ -5,6 +5,7 @@
 # IMPORT MODULES
 ################
 # This section imports relevant modules for the script.
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn
@@ -13,6 +14,10 @@ import seaborn
 # IMPORT DATA
 #############
 # This section imports the data that will be used in the correlation plot.
+
+# Set working directory.
+# This obviously needs to be changed depending on the computer being used.
+os.chdir('D:\\Users\\JBansal\\Documents\\GitHub\\visualizations')
 
 # Import data.
 census_data = pd.read_csv('census_data.csv',

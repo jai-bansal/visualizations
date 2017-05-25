@@ -5,8 +5,13 @@
 # all observations for the year 2010.
 
 # Import modules.
+import os
 import pandas as pd
 import plotly
+
+# Set working directory.
+# This obviously needs to be changed depending on the computer being used.
+os.chdir('D:\\Users\\JBansal\\Documents\\GitHub\\visualizations')
 
 # Load data.
 census_data = pd.read_csv('census_data.csv',

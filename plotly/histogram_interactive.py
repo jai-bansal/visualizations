@@ -73,7 +73,7 @@ layout = Layout(title = 'Frequency of 2010 US State Populations (in millions)',
                                     showarrow = True)])
 
 # Plot data.
-histogram_data = [histogram,]
+histogram_data = [histogram]
 plotly.offline.plot(dict(data = histogram_data,
                          layout = layout))
 

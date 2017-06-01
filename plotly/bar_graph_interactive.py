@@ -5,8 +5,7 @@
 ################
 # IMPORT MODULES
 ################
-
-# Import modules.
+# This section imports necessary modules.
 import os
 import pandas as pd
 import numpy as np
@@ -16,6 +15,7 @@ import plotly.graph_objs as pgo
 #############
 # IMPORT DATA
 #############
+# This section imports data.
 
 # Set working directory.
 # This obviously needs to be changed depending on the computer being used.
@@ -28,6 +28,7 @@ census_data = pd.read_csv('census_data.csv',
 ################
 # TRANSFORM DATA
 ################
+# This section prepares the data for plotting.
 
 # Specify states of interest.
 states = ['Delaware', 'Maryland', 'New Jersey', 'Pennsylvania', 'Virginia', 'West Virginia']
@@ -46,7 +47,9 @@ census_subset['2010'] = census_subset['2010'] / 1000000
 ###########
 # PLOT DATA
 ###########
+# This section plots the data.
 
+# Plot data.
 plotly.offline.plot({
     "data": [
         pgo.Bar(

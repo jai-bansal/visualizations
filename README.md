@@ -1,6 +1,9 @@
-#### Synopsis:
+### Synopsis:
 This project creates visualizations in R and Python, contained in the R and Python branches, respectively. 
 Each branch contains folders that indicate what package was used to generate the visualizations inside. 
+
+Files are intuitively named. Files ending in "interactive" relate to interactive plots. Images for these plots show evidence of interactivity but obviously just running the script will yield the full (and much cooler) plot.
+
 The R visualizations generally use "ggplot2", "rCharts", and/or "plotly".
 The Python visualizations generally use "matplotlib" or "plotly".
 Wherever possible, for a visualization, there is a creation script and an image of the output. For some of the 3D or motion chart outputs, running the script allows for some interactivity that an image can't capture.
@@ -8,10 +11,10 @@ Note that in the 'R' branch, the lift chart and ROC curve plot are both generate
 
 There are enough visualizations that I won't provide an exact accounting of what plots are in what branch / folder. Happy exploring!
 
-#### Motivation:
+### Motivation:
 I created this project to explore various visualizations.
 
-#### Dataset Details:
+### Dataset Details:
 The data consists of the population of each US state for 1960, 1970, 1980, 1990, 2000, and 2010.
 This data comes from the United States Census and can be viewed at:
 *https://en.wikipedia.org/wiki/List_of_U.S._states_by_historical_population*
@@ -23,5 +26,5 @@ Each branch contains 'census_data_scrape_and_process' (.R or .py depending on th
 This script scrapes the data from the web. 
 Each branch also contains 'census_data.csv', which is the data file used in all visualizations.
 
-#### License:
+### License:
 GNU General Public License
